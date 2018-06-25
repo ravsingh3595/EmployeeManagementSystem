@@ -1,4 +1,4 @@
-package com.androidproject.employeemanagementsystem;
+package com.androidproject.employeemanagementsystem.userInterface.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.androidproject.employeemanagementsystem;
+package com.androidproject.employeemanagementsystem.userInterface.activities;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -9,7 +9,7 @@ import com.androidproject.employeemanagementsystem.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 4000;
+    private static int SPLASH_TIME_OUT = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
