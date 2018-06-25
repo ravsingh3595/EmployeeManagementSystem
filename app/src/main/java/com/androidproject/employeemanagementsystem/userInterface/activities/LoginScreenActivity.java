@@ -1,4 +1,4 @@
-package com.androidproject.employeemanagementsystem.userInterface.activities;
+package com.androidproject.employeemanagementsystem;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.androidproject.employeemanagementsystem.R;
+import com.androidproject.employeemanagementsystem.*;
 
 public class LoginScreenActivity extends AppCompatActivity {
 
