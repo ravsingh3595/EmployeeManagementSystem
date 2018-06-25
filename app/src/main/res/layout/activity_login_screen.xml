@@ -1,18 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/he"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".userInterface.activities.LoginScreenActivity">
+    android:background="@drawable/Login_background_2"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/txtviewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/app_name"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edtUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtviewName"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="12dp"
+        android:drawableRight="@android:drawable/ic_menu_edit"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:textColorLink="@android:color/background_dark" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtUserName"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:drawableRight="@android:drawable/ic_lock_idle_lock"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/ckbRememberMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/edtPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:text="@string/remember_me" />
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ckbRememberMe"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="@string/login" />
+
+    <TextView
+        android:id="@+id/txtRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:linksClickable="true"
+        android:text="Register"
+        android:textColor="@android:color/darker_gray"/>
+
+    <TextView
+        android:id="@+id/txtForgetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRegister"
+        android:layout_centerHorizontal="true"
+        android:linksClickable="true"
+        android:text="@string/forget_password"
+        android:textColor="@android:color/darker_gray"/>
+</RelativeLayout>
