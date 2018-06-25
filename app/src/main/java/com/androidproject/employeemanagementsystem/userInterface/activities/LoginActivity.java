@@ -1,9 +1,11 @@
-package com.androidproject.employeemanagementsystem;
+package com.androidproject.employeemanagementsystem.userInterface.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LoginScreenActivity extends AppCompatActivity {
+import com.androidproject.employeemanagementsystem.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
