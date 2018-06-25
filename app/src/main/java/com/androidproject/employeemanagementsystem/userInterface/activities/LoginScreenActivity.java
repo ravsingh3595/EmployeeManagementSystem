@@ -67,6 +67,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Incorrect Login or Password", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }
@@ -78,5 +79,11 @@ public class LoginScreenActivity extends AppCompatActivity {
         btnLogin = (Button)findViewById(R.id.btnLogin);
         ckbRememberMe = (CheckBox)findViewById(R.id.ckbRememberMe);
     }
+
+    public void signUp(View v){
+        Intent i = new Intent(this, SignUpActivity.class);
+        startActivity(i);
+    }
+
 
 }

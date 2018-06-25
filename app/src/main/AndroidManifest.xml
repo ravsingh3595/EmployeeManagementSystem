@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_employee"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_employee"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".userInterface.activities.LoginScreenActivity" />
@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".userInterface.activities.HomeActivity" />
+        <activity android:name=".userInterface.activities.SignUpActivity"
+            android:label="Sign up"></activity>
     </application>
 
 </manifest>

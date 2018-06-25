@@ -8,4 +8,7 @@
     <string name="remember_me">Remember Me</string>
     <string name="login">Login</string>
     <string name="forget_password">Forget Password?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email Address</string>
 </resources>
