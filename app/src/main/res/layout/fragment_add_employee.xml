@@ -37,7 +37,7 @@
             android:layout_margin="5dp"/>
 
         <LinearLayout
-            android:id="@+id/linearVehical"
+            android:id="@+id/linearVehicle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -46,8 +46,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
 
                 <RadioButton
                     android:id="@+id/rbCar"
@@ -99,6 +99,7 @@
                 android:hint="Enter Plate Number" />
 
         </RelativeLayout>
+
 
         <LinearLayout
             android:id="@+id/linearEmpType"
