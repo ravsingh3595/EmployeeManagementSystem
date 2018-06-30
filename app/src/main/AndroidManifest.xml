@@ -13,13 +13,18 @@
         <activity
             android:name=".userInterface.activities.SplashScreenActivity"
             android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".userInterface.activities.HomeActivity" />
+        <activity
+            android:name=".userInterface.activities.MainTabActivity"
+            android:label="@string/title_activity_main_tab"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".userInterface.activities.HomeActivity" />
     </application>
 
 </manifest>
