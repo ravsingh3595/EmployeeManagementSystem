@@ -14,4 +14,23 @@
     <string name="title_activity_test">testActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="Preferences">myPreferences</string>
+    <string name="enter_employee_name">Enter Employee Name</string>
+    <string name="enter_d_o_b">Enter D.O.B</string>
+    <string name="if_employee_has_vehicle">If Employee has vehicle?</string>
+    <string name="car">Car</string>
+    <string name="motorcycle">Motorcycle</string>
+    <string name="enter_model">Enter Model</string>
+    <string name="enter_plate_number">Enter Plate Number</string>
+    <string name="part_time">Part-Time</string>
+    <string name="intern">Intern</string>
+    <string name="full_time">Full-Time</string>
+    <string name="hours_worked">Hours Worked</string>
+    <string name="rate">Rate</string>
+    <string name="is_fixed_based_part_time_employee">Is Fixed Based Part-Time Employee?</string>
+    <string name="commission_percentage_fixed_ammount">Commission Percentage/Fixed Ammount</string>
+    <string name="school_name">School Name</string>
+    <string name="salary">Salary</string>
+    <string name="bonus">Bonus</string>
+    <string name="save_payroll">Save Payroll</string>
 </resources>
