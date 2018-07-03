@@ -19,7 +19,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:hint="Enter Employee Name" />
+            android:hint="@string/enter_employee_name" />
 
         <EditText
             android:id="@+id/edtDob"
@@ -27,13 +27,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:hint="Enter D.O.B" />
+            android:hint="@string/enter_d_o_b" />
 
         <CheckBox
             android:id="@+id/chkVehicle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="If Employee has vehicle?"
+            android:text="@string/if_employee_has_vehicle"
             android:layout_margin="5dp"/>
 
         <LinearLayout
@@ -54,14 +54,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Car" />
+                    android:text="@string/car" />
 
                 <RadioButton
                     android:id="@+id/rbMotorcycle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:text="Motorcycle" />
+                    android:text="@string/motorcycle" />
 
             </RadioGroup>
 
@@ -86,7 +86,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="72dp"
                 android:layout_toRightOf="@+id/imageView"
-                android:hint="Enter Model" />
+                android:hint="@string/enter_model" />
 
             <EditText
                 android:id="@+id/edtplate"
@@ -96,7 +96,7 @@
                 android:layout_below="@+id/edtModel"
                 android:layout_marginEnd="72dp"
                 android:layout_toRightOf="@+id/imageView"
-                android:hint="Enter Plate Number" />
+                android:hint="@string/enter_plate_number" />
 
         </RelativeLayout>
 
@@ -119,21 +119,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Part-Time" />
+                    android:text="@string/part_time" />
 
                 <RadioButton
                     android:id="@+id/rbIntern"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Intern" />
+                    android:text="@string/intern" />
 
                 <RadioButton
                     android:id="@+id/rbFulltime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Full-Time" />
+                    android:text="@string/full_time" />
             </RadioGroup>
 
         </LinearLayout>
@@ -148,7 +148,7 @@
                 android:id="@+id/edtHours"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Hours Worked"
+                android:hint="@string/hours_worked"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"/>
 
@@ -158,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:hint="Rate"/>
+                android:hint="@string/rate"/>
 
             <CheckBox
                 android:id="@+id/chkFixedOrCommission"
@@ -167,7 +167,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:text="Is Fixed Based Part-Time Employee?" />
+                android:text="@string/is_fixed_based_part_time_employee" />
 
             <LinearLayout
                 android:id="@+id/linearFixedOrCommission"
@@ -178,7 +178,7 @@
                     android:id="@+id/edtCommissionPerOrFixedAmt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Commission Percentage/Fixed Ammount"/>
+                    android:hint="@string/commission_percentage_fixed_ammount"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -193,7 +193,7 @@
                 android:id="@+id/edtSchoolName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="School Name"
+                android:hint="@string/school_name"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"/>
 
@@ -210,7 +210,7 @@
                 android:id="@+id/edtSalary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Salary"
+                android:hint="@string/salary"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"/>
 
@@ -220,7 +220,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:hint="Bonus"/>
+                android:hint="@string/bonus"/>
 
         </LinearLayout>
 
@@ -230,7 +230,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
             android:padding="10dp"
-            android:text="Save Payroll" />
+            android:text="@string/save_payroll" />
 
 
 
