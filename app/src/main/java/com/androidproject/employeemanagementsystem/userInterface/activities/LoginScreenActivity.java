@@ -28,12 +28,12 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         initView();
 
-        SharedPreferences mSharedPreferences = this.getSharedPreferences("myPreferences", MODE_PRIVATE );
+        SharedPreferences mSharedPreferences = this.getSharedPreferences(getString(R.string.Preferences), MODE_PRIVATE );
         final SharedPreferences.Editor mEditor = mSharedPreferences.edit();
 
-        if (mSharedPreferences.getString("userid", null) != null){
-            edtUserName.setText(mSharedPreferences.getString("userid", "admin"));
-            edtPassword.setText(mSharedPreferences.getString("password", "s3cr3t"));
+        if (mSharedPreferences.getString(getString(R.string.username), null) != null){
+            edtUserName.setText(mSharedPreferences.getString(getString(R.string.username), "admin"));
+            edtPassword.setText(mSharedPreferences.getString(getString(R.string.password), "s3cr3t"));
             ckbRememberMe.setChecked(true);
 
         }
@@ -47,13 +47,13 @@ public class LoginScreenActivity extends AppCompatActivity {
                 if (userName.equals("admin") && password.equals("s3cr3t")) {
 
                     if (ckbRememberMe.isChecked()) {
-                        mEditor.putString("userid", "admin");
-                        mEditor.putString("password", "s3cr3t");
+                        mEditor.putString(getString(R.string.username), "admin");
+                        mEditor.putString((getString(R.string.password)), "s3cr3t");
                     }
                     else
                     {
-                        mEditor.remove("userid");
-                        mEditor.remove("password");
+                        mEditor.remove(getString(R.string.username));
+                        mEditor.remove(getString(R.string.password));
                         //clear all
                         //mEditor.clear();
                     }

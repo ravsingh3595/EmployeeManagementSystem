@@ -1,6 +1,5 @@
 package com.androidproject.employeemanagementsystem.userInterface.fragments;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-
 import com.androidproject.employeemanagementsystem.R;
 
 import butterknife.BindView;
@@ -24,10 +22,10 @@ import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
+
 public class AddEmployeeFragment extends Fragment {
 
 
@@ -91,11 +89,9 @@ public class AddEmployeeFragment extends Fragment {
     LinearLayout linearMain;
     Unbinder unbinder;
 
-
     public AddEmployeeFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -139,9 +135,10 @@ public class AddEmployeeFragment extends Fragment {
     }
 
     @OnCheckedChanged({R.id.rbParttime, R.id.rbIntern, R.id.rbFulltime})
-    public void onEmployeeTypeChanged(RadioButton radioButton)
+    public void onEmployeeTypeChanged(CompoundButton radioButton, boolean checked)
     {
-        boolean checked = radioButton.isChecked();
+        //boolean checked = radioButton.isChecked();
+
         if (checked)
         {
             linearParttime.setVisibility(View.GONE);
@@ -162,14 +159,7 @@ public class AddEmployeeFragment extends Fragment {
                     break;
             }
         }
-        else
-        {
-            linearParttime.setVisibility(View.GONE);
-            linearIntern.setVisibility(View.GONE);
-            linearFulltime.setVisibility(View.GONE);
-        }
     }
-
 
     @OnClick(R.id.chkFixedOrCommission)
     public void onChkFixedOrCommissionChecked()
@@ -183,6 +173,4 @@ public class AddEmployeeFragment extends Fragment {
             edtCommissionPerOrFixedAmt.setHint("Enter Fixed Commission Amount");
         }
     }
-
-
 }
