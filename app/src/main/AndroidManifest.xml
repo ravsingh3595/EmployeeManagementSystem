@@ -13,6 +13,12 @@
         <activity
             android:name=".userInterface.activities.SplashScreenActivity"
             android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".userInterface.activities.MainTabActivity"
+            android:label="Employee"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
