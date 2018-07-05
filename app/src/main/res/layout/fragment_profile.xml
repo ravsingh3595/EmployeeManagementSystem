@@ -52,24 +52,39 @@
 
     </android.support.design.widget.TextInputLayout>
 
+<LinearLayout
+    android:id="@+id/linearDob"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@+id/layoutName">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/layoutDOB"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layoutName"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_weight="1"
 
+        android:layout_marginRight="10dp">
 
         <EditText
             android:id="@+id/edtDOB"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/enter_d_o_b"
             android:inputType="textPersonName" />
-
     </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btnSelectDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"/>
+
+</LinearLayout>
 
 
     <TextView
@@ -78,7 +93,7 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/layoutDOB"
+        android:layout_below="@+id/linearDob"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:text="Gender:"
@@ -100,6 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="true"
             android:text="Male" />
 
         <RadioButton
@@ -148,7 +164,15 @@
         android:layout_marginTop="48dp"
         android:text="Upload" />
 
-
+    <Button
+        android:id="@+id/btnShowLoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="44dp"
+        android:text="show Location" />
 
 
 </RelativeLayout>
