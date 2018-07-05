@@ -81,6 +81,7 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.btnShowLoc)
     Button btnShowLoc;
 
+    // variables and constants
     private DatePickerDialog datePickerDialog;
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     private String userChoosenTask;
@@ -96,6 +97,7 @@ public class ProfileFragment extends Fragment {
         return rootView;
     }
 
+    /* handle button clicks */
     @OnClick({R.id.btnSelectDate, R.id.btnSave, R.id.btnUpload})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -109,6 +111,17 @@ public class ProfileFragment extends Fragment {
                 break;
         }
     }
+
+    @OnClick(R.id.btnShowLoc)
+    public void onViewClicked() {
+        String url = "geo:0,0?q=Brooklyn+Bridge,New+York,NY";
+
+        Uri uri = Uri.parse(url);
+        showMap(uri);
+    }
+
+
+    /* handle choose date from calendar */
 
     public void selectDateButtonTapped() {
 
@@ -130,6 +143,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
+    /* select Image and camera methods */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
@@ -241,14 +255,8 @@ public class ProfileFragment extends Fragment {
         imgProfile.setImageBitmap(bm);
     }
 
-    @OnClick(R.id.btnShowLoc)
-    public void onViewClicked() {
-        String url = "geo:0,0?q=Brooklyn+Bridge,New+York,NY";
 
-        Uri uri = Uri.parse(url);
-        showMap(uri);
-    }
-
+    /* methods show map */
     public void showMap(Uri geoLocation) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(geoLocation);
@@ -257,5 +265,6 @@ public class ProfileFragment extends Fragment {
             startActivity(intent);
         }
     }
+
 }
 
