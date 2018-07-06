@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.androidproject.employeemanagementsystem.R;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.EmployeeListFragment;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.HelpFragment;
+import com.androidproject.employeemanagementsystem.userInterface.fragments.HomeFragment;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.ProfileFragment;
 
 public class MainTabActivity extends AppCompatActivity {
@@ -147,11 +148,13 @@ public class MainTabActivity extends AppCompatActivity {
 //            return PlaceholderFragment.newInstance(position + 1);
 
             switch(position){
-                case 0: ProfileFragment profileFragment = new ProfileFragment();
-                    return  profileFragment;
+                case 0: HomeFragment homeFragment = new HomeFragment();
+                    return  homeFragment;
                 case 1: EmployeeListFragment employeeListTab = new EmployeeListFragment();
                     return  employeeListTab;
-                case 2: HelpFragment helpFragment = new HelpFragment();
+                case 2: ProfileFragment profileFragment = new ProfileFragment();
+                    return  profileFragment;
+                case 3: HelpFragment helpFragment = new HelpFragment();
                     return helpFragment;
                 default:
                     return null;
@@ -161,7 +164,7 @@ public class MainTabActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
     }
 }

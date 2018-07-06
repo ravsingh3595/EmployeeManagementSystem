@@ -34,9 +34,11 @@
     <string name="bonus">Bonus</string>
     <string name="save_payroll">Save Payroll</string>
     <string name="action_save">action_sav</string>
-    <string name="tab_text_1">Profile</string>
-    <string name="tab_text_2">Employee List</string>
-    <string name="tab_text_3">Help</string>
+    <string name="tab_profile_text">Profile</string>
+    <string name="tab_employee_list_text">Employee List</string>
+    <string name="tab_help_text">Help</string>
     <string name="enter_name">Enter Name</string>
     <string name="enter_Address">Enter address</string>
+    <string name="tab_home_text">Home</string>
+    <string name="tab_add_emp_text">Add Employee</string>
 </resources>
