@@ -33,4 +33,5 @@
     <string name="salary">Salary</string>
     <string name="bonus">Bonus</string>
     <string name="save_payroll">Save Payroll</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
