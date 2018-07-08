@@ -20,16 +20,17 @@
             android:name=".userInterface.activities.MainTabActivity"
             android:label="Employee"
             android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".userInterface.activities.HomeActivity" />
         <activity
             android:name=".userInterface.activities.SignUpActivity"
             android:label="Sign up">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
     </application>

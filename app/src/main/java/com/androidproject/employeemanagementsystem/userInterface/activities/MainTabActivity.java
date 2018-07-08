@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.androidproject.employeemanagementsystem.R;
+import com.androidproject.employeemanagementsystem.userInterface.fragments.EmployeeDetailFragment;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.EmployeeListFragment;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.HelpFragment;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.HomeFragment;
@@ -71,9 +72,12 @@ public class MainTabActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
 
+
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -94,7 +98,7 @@ public class MainTabActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     /**
      * A placeholder fragment containing a simple view.
@@ -154,7 +158,7 @@ public class MainTabActivity extends AppCompatActivity {
                     return  employeeListTab;
                 case 2: ProfileFragment profileFragment = new ProfileFragment();
                     return  profileFragment;
-                case 3: HelpFragment helpFragment = new HelpFragment();
+                case 3: EmployeeDetailFragment helpFragment = new EmployeeDetailFragment();
                     return helpFragment;
                 default:
                     return null;

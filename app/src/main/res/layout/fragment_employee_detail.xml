@@ -120,7 +120,7 @@
         android:layout_below="@+id/relativeVehical"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:text="Employee is PartTime "
+        android:text="Employee is Commission based PartTime "
         android:textStyle="bold" />
 
     <RelativeLayout
@@ -163,6 +163,7 @@
             android:layout_toRightOf="@+id/txtRateTitle"
             android:text="15 " />
 
+        <!--change to fixed amount if part time fixed employee-->
         <TextView
             android:id="@+id/txtCommOrFixedTitle"
             android:layout_width="wrap_content"
@@ -180,17 +181,78 @@
             android:layout_toRightOf="@+id/txtCommOrFixedTitle"
             android:text="5%" />
 
+
     </RelativeLayout>
 
-    <!--<RelativeLayout-->
-        <!--android:id="@+id/relativePartTimeCommBased"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="5dp"-->
-        <!--android:layout_toRightOf="@+id/txtCommOrFixedTitle"-->
-        <!--android:layout_below="@+id/relativePartTime">-->
+    <RelativeLayout
+        android:id="@+id/relativeIntern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/relativePartTime">
 
-    <!--</RelativeLayout>-->
+        <TextView
+            android:id="@+id/txtCollegeNameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lambton College: "
+            />
+
+        <TextView
+            android:id="@+id/txtCollegeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtRateTitle"
+            android:layout_toRightOf="@+id/txtCollegeNameTitle"
+            android:text="5%" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeFullTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/relativeIntern">
+
+        <TextView
+            android:id="@+id/txtSalaryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salary: "
+            />
+
+        <TextView
+            android:id="@+id/txtSalary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeIntern"
+            android:layout_toRightOf="@+id/txtSalaryTitle"
+            android:text="5%" />
+
+
+        <TextView
+            android:id="@+id/txtBonusTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtSalaryTitle"
+            android:layout_marginTop="5dp"
+            android:text="Bonus: "
+            />
+
+        <TextView
+            android:id="@+id/txtBonus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtSalary"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/txtBonusTitle"
+            android:text="5%" />
+
+    </RelativeLayout>
 
 
 </RelativeLayout>
