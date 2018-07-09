@@ -27,6 +27,9 @@ import butterknife.Unbinder;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class EmployeeListFragment extends Fragment {
+
+    ArrayList<Employee> employeeArrayList = new ArrayList<>();
+
     @BindView(R.id.listEmplyee)
     ListView listEmplyee;
     Unbinder unbinder;
@@ -50,16 +53,15 @@ public class EmployeeListFragment extends Fragment {
         listEmplyee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-//                Intent intent = new Intent(getActivity(), SendMessage.class);
-//                String message = "abc";
-//                intent.putExtra(EXTRA_MESSAGE, message);
-//                startActivity(intent);
 
+                // send data to employee detail activity
+                Intent intent = new Intent(getActivity(), EmployeeDetailFragment.class);
+                Bundle bundles = new Bundle();
+                bundles.putParcelable("employee", employeeArrayList.get(position));
+                startActivity(intent);
                 Log.e("id", "Selected index " + position);
-//                Employee entry = (Employee) adapterView.getItemAtPosition(position);
             }
         });
-
         return rootView;
     }
 
@@ -83,9 +85,9 @@ public class EmployeeListFragment extends Fragment {
         items.add(new EmployeeListItem("Item 2", "Second Item on the list"));
         items.add(new EmployeeListItem("Item 3", "Third Item on the list"));
 
+        /* NOTE: -------------- UNCOMMENT CODE WHEN DATA IS GET FROM DATABASE ---------------- */
+
+
         return items;
     }
-
-
-
 }

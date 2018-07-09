@@ -1,22 +1,39 @@
 package com.androidproject.employeemanagementsystem.model.employee;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.androidproject.employeemanagementsystem.model.vehicle.Vehicle;
 
-public abstract class Employee {
+public class Employee implements Parcelable{
 
     private String name;
     private int age;
     private Vehicle vehicle;
 
-    public Employee()
-    {
-
-    }
+    public Employee() { }
 
     public Employee(String name, int age) {
         this.name = name;
         this.age = age;
     }
+
+    protected Employee(Parcel in) {
+        name = in.readString();
+        age = in.readInt();
+    }
+
+    public static final Creator<Employee> CREATOR = new Creator<Employee>() {
+        @Override
+        public Employee createFromParcel(Parcel in) {
+            return new Employee(in);
+        }
+
+        @Override
+        public Employee[] newArray(int size) {
+            return new Employee[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -52,9 +69,8 @@ public abstract class Employee {
         this.vehicle = vehicle;
     }
 
-    public abstract float calEarnings();
-    {
-
+    public float calEarnings(){
+        return  0.0F;
     }
 
     public void printMyData()
@@ -62,5 +78,14 @@ public abstract class Employee {
 
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
 }
 
