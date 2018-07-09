@@ -3,6 +3,8 @@ package com.androidproject.employeemanagementsystem.userInterface.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +47,6 @@ public class EmployeeListFragment extends Fragment {
         // 1. pass context and data to the custom adapter
         EmployeeListAdapter adapter = new EmployeeListAdapter(getActivity(), generateData());
 
-
         // 3. setListAdapter
         listEmplyee.setAdapter(adapter);
 
@@ -53,15 +54,24 @@ public class EmployeeListFragment extends Fragment {
         listEmplyee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
                 // send data to employee detail activity
                 Intent intent = new Intent(getActivity(), EmployeeDetailFragment.class);
                 Bundle bundles = new Bundle();
                 bundles.putParcelable("employee", employeeArrayList.get(position));
                 startActivity(intent);
                 Log.e("id", "Selected index " + position);
+//
+//                EmployeeDetailFragment employeeDetailFragment = new EmployeeDetailFragment();
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.linearTop, employeeDetailFragment);
+//                fragmentTransaction.commit();
+
+
             }
         });
+
+
         return rootView;
     }
 
