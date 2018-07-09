@@ -1,40 +1,24 @@
 package com.androidproject.employeemanagementsystem.model.employee;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.androidproject.employeemanagementsystem.model.vehicle.Vehicle;
 
-public class Employee implements Parcelable{
+public abstract class Employee {
 
     private String name;
     private int age;
     private Vehicle vehicle;
-    private Employee employee;
+    private String employee;
+    private int employeeId;
 
-    public Employee() { }
+    public Employee()
+    {
+
+    }
 
     public Employee(String name, int age) {
         this.name = name;
         this.age = age;
     }
-
-    protected Employee(Parcel in) {
-        name = in.readString();
-        age = in.readInt();
-    }
-
-    public static final Creator<Employee> CREATOR = new Creator<Employee>() {
-        @Override
-        public Employee createFromParcel(Parcel in) {
-            return new Employee(in);
-        }
-
-        @Override
-        public Employee[] newArray(int size) {
-            return new Employee[size];
-        }
-    };
 
     public String getName() {
         return name;
@@ -70,19 +54,24 @@ public class Employee implements Parcelable{
         this.vehicle = vehicle;
     }
 
-
-    public Employee getEmployee() {
+    public String getEmployee() {
         return employee;
     }
 
-    public void setEmployee(Employee employee) {
+    public void setEmployee(String employee) {
         this.employee = employee;
     }
+    public int getEmployeeId() {
+        return employeeId;
+    }
 
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
 
+    public abstract float calEarnings();
+    {
 
-    public float calEarnings(){
-        return  0.0F;
     }
 
     public void printMyData()
@@ -90,14 +79,5 @@ public class Employee implements Parcelable{
 
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-
-    }
 }
 

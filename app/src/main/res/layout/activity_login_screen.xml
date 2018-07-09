@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
+
 
     <TextView
         android:id="@+id/lblAppName"
@@ -11,8 +12,8 @@
         android:layout_marginTop="80dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/app_name"
-        android:textColor="@color/colorAccent"
-        android:textSize="35sp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="32sp"
         android:textStyle="bold" />
 
     <EditText
@@ -50,24 +51,22 @@
         android:text="@string/remember_me" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:orientation="horizontal"
         android:layout_below="@+id/ckbRememberMe"
         android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true">
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login" />
 
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up" />
 

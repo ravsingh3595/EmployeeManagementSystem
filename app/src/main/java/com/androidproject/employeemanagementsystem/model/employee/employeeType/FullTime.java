@@ -2,7 +2,9 @@ package com.androidproject.employeemanagementsystem.model.employee.employeeType;
 
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
 
-public class FullTime extends Employee {
+import java.io.Serializable;
+
+public class FullTime extends Employee implements Serializable {
 
     private float salary;
     private float bonus;

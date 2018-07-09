@@ -13,34 +13,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".userInterface.activities.LoginScreenActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
-        <activity
-            android:name=".userInterface.activities.SplashScreenActivity"
-
-            android:screenOrientation="portrait"></activity>
-
-        <activity
-            android:name=".userInterface.activities.MainTabActivity"
-            android:label="Employee"
-            android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".userInterface.activities.HomeActivity">
-        </activity>
+        <activity
+            android:name=".userInterface.activities.SplashScreenActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".userInterface.activities.MainTabActivity"
+            android:label="Employee"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".userInterface.activities.HomeActivity"></activity>
         <activity
             android:name=".userInterface.activities.SignUpActivity"
-            android:label="Sign up">
+            android:label="Sign up"
+            android:parentActivityName=".userInterface.activities.LoginScreenActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".userInterface.activities.LoginScreenActivity" />
         </activity>
-
+        <activity android:name=".PdfActivity"></activity>
     </application>
 
 </manifest>

@@ -3,7 +3,9 @@ package com.androidproject.employeemanagementsystem.model.employee.employeeType.
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
 import com.androidproject.employeemanagementsystem.model.employee.employeeType.PartTime;
 
-public class CommissionBasedPartTime extends PartTime {
+import java.io.Serializable;
+
+public class CommissionBasedPartTime extends PartTime implements Serializable {
 
     private float commissionPercentage;
 
