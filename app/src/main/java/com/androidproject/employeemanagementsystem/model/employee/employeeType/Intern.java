@@ -2,7 +2,9 @@ package com.androidproject.employeemanagementsystem.model.employee.employeeType;
 
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
 
-public class Intern extends Employee {
+import java.io.Serializable;
+
+public class Intern extends Employee implements Serializable{
 
     private String schoolName;
 

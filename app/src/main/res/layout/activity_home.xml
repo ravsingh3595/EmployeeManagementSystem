@@ -7,9 +7,9 @@
     android:background="#1DE9B6"
     tools:context=".userInterface.activities.HomeActivity">
 
-    <!--<fragment-->
-        <!--android:id="@+id/fragment"-->
-        <!--android:name="com.androidproject.employeemanagementsystem.userInterface.fragments.AddEmployeeFragment"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content" />-->
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.androidproject.employeemanagementsystem.userInterface.fragments.AddEmployeeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

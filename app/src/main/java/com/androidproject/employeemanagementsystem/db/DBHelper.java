@@ -45,20 +45,6 @@ public class DBHelper extends SQLiteOpenHelper
 
         Log.d(TAG, "onCreate Success for Payroll");
 
-//        String userTable = "CREATE TABLE tblUser("
-//                + " userId INTERGER PRIMARY KEY ,"
-//                + " fullName TEXT default null,"
-//                + " email TEXT default null,"
-//                + " password TEXT default null,"
-//                + " picture BLOB default null,"
-//                + " birthDate DATE default null,"
-//                + " address TEXT default null,"
-//                + " city TEXT default null,"
-//                + " province TEXT default null,"
-//                + " country TEXT default null,"
-//                + " lat DOUBLE default null,"
-//                + " long DOUBLE default null)";
-
         String userTable = "CREATE TABLE " + DBUser.TABLE_USER + "(" +
                 " userId INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + DBUser.USER_FULL_NAME + " TEXT default null,"

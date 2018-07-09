@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.androidproject.employeemanagementsystem.R;
 import com.androidproject.employeemanagementsystem.db.DBUser;
 import com.androidproject.employeemanagementsystem.model.user.User;
+import com.androidproject.employeemanagementsystem.util.pdf.Utility;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -41,25 +42,26 @@ public class SignUpActivity extends AppCompatActivity {
                     Log.d("DBUser outside", String.valueOf(validate()));
                     Log.d("DBUser inside", String.valueOf(isEmailValid(edtEmail.getText().toString())));
 
-                    if(isEmailValid(edtEmail.getText().toString()))
-                    {
+//                    if(isEmailValid(edtEmail.getText().toString()))
+//                    {
                         Log.d("DBUser inside", String.valueOf(isEmailValid(edtEmail.getText().toString())));
                         user.setFullname(edtFullname.getText().toString());
                         user.setEmail(edtEmail.getText().toString());
                         user.setPassword(edtPassword.getText().toString());
                         dbUser.insertUser(user);
                         dbUser.getAllUser();
-                    }
-                    else {
-                        Toast.makeText(SignUpActivity.this, "Invalid Email Id, Please try again later", Toast.LENGTH_LONG).show();
-                    }
+                        Intent i = new Intent(SignUpActivity.this, LoginScreenActivity.class);
+                        startActivity(i);
+                        finish();
+//                    }
+//                    else {
+//                        Toast.makeText(SignUpActivity.this, "Invalid Email Id, Please try again later", Toast.LENGTH_LONG).show();
+//                    }
                 }
-                else {
-                    Toast.makeText(SignUpActivity.this, "Password Didn't match, Please try again later", Toast.LENGTH_LONG).show();
-                }
-                Intent i = new Intent(SignUpActivity.this, LoginScreenActivity.class);
-                startActivity(i);
-                finish();
+//                else {
+//                    Toast.makeText(SignUpActivity.this, "Password Didn't match, Please try again later", Toast.LENGTH_LONG).show();
+//                }
+
             }
         });
     }
@@ -70,6 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
+    /*
     public boolean validate()
     {
 
@@ -92,6 +95,28 @@ public class SignUpActivity extends AppCompatActivity {
         return false;
 
     }
+    */
+    public boolean validate() {
+       if (edtFullname.getText().toString().isEmpty()) {
+           edtFullname.setError("Please enter full name");
+       } else if (!Utility.isValidEmail(edtEmail.getText())) {
+           edtEmail.setError("Please enter a valid email address");
+       } else if (edtPassword.getText().toString().isEmpty()) {
+           edtPassword.setError("Please Enter Password");
+       } else if (edtPassword.getText().toString().length() < 5) {
+           edtPassword.setError("Please enter password greater than 5 characters");
+       }
+       if (edtPassword.getText().toString().length() != 0) {
+           if (edtPassword.getText().toString().equals(edtConfirmPassword.getText().toString())) {
+               return true;
+           } else {
+               edtConfirmPassword.setError("Confirm Password not matched");
+           }
+       }
+       return false;
+
+   }
+
     private void initView()
     {
         edtFullname = (EditText)findViewById(R.id.edtFullname);

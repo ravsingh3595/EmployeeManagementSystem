@@ -1,5 +1,7 @@
 package com.androidproject.employeemanagementsystem.userInterface.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,7 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+
+import com.androidproject.employeemanagementsystem.PdfActivity;
 import com.androidproject.employeemanagementsystem.R;
+import com.androidproject.employeemanagementsystem.model.employee.employeeType.FullTime;
+import com.androidproject.employeemanagementsystem.model.employee.employeeType.Intern;
+import com.androidproject.employeemanagementsystem.model.employee.employeeType.partTime.CommissionBasedPartTime;
+import com.androidproject.employeemanagementsystem.model.employee.employeeType.partTime.FixedBasedPartTime;
+import com.androidproject.employeemanagementsystem.userInterface.activities.HomeActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -93,15 +102,18 @@ public class AddEmployeeFragment extends Fragment {
         // Required empty public constructor
     }
 
+    Bundle b = new Bundle();
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_employee, container, false);
         unbinder = ButterKnife.bind(this, view);
+
         linearVehicle.setVisibility(View.GONE);
         relativeVehicleInfo.setVisibility(View.GONE);
-        //linearEmpType.setVisibility(View.GONE);
         linearParttime.setVisibility(View.GONE);
         linearIntern.setVisibility(View.GONE);
         linearFulltime.setVisibility(View.GONE);
@@ -112,10 +124,6 @@ public class AddEmployeeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-    }
-
-    @OnClick(R.id.btnSavePayroll)
-    public void onViewClicked() {
     }
 
     @OnClick(R.id.chkVehicle)
@@ -153,10 +161,17 @@ public class AddEmployeeFragment extends Fragment {
 
                 case R.id.rbIntern:
                     linearIntern.setVisibility(View.VISIBLE);
+                    Intern intern = new Intern();
+                    //intern.setSchoolName(edtSchoolName,getText().toString());
+                    b.putSerializable("Intern", intern);
                     break;
 
                 case R.id.rbFulltime:
                     linearFulltime.setVisibility(View.VISIBLE);
+                    FullTime fullTime = new FullTime();
+//                    fullTime.setBonus(Float.parseFloat(edtBonus.getText().toString()));
+//                    fullTime.setSalary(Float.parseFloat(edtSalary.getText().toString()));
+                    b.putSerializable("FullTime", fullTime);
                     break;
             }
         }
@@ -168,10 +183,41 @@ public class AddEmployeeFragment extends Fragment {
         if (chkFixedOrCommission.isChecked())
         {
             edtCommissionPerOrFixedAmt.setHint("Enter Fixed Commission Percentage");
+            CommissionBasedPartTime com = new CommissionBasedPartTime();
+            com.setHoursWorked(Float.parseFloat(edtHours.getText().toString()));
+            com.setRate(Float.parseFloat(edtRate.getText().toString()));
+            com.setCommissionPercentage(Float.parseFloat(edtCommissionPerOrFixedAmt.getText().toString()));
+            b.putSerializable("CommissionBased", com);
         }
         else
         {
             edtCommissionPerOrFixedAmt.setHint("Enter Fixed Commission Amount");
+            FixedBasedPartTime fix = new FixedBasedPartTime();
+            fix.setHoursWorked(Float.parseFloat(edtHours.getText().toString()));
+            fix.setRate(Float.parseFloat(edtRate.getText().toString()));
+            fix.setFixedAmount(Float.parseFloat(edtCommissionPerOrFixedAmt.getText().toString()));
+            b.putSerializable("FixedBased", fix);
         }
+    }
+
+//    public static void startIntent(Context context, Bundle bundle) {
+//        Intent mIntent = new Intent(context, NextClass.class);
+//        mIntent.putExtras(bundle);
+//        context.startActivity(mIntent);
+//    }
+
+    @OnClick(R.id.btnSavePayroll)
+    public void onViewClicked() {
+
+        AddEmployeeFragment addEmployeeFragment = new AddEmployeeFragment ();
+        addEmployeeFragment.setArguments(b);
+
+        //Inflate the fragment
+
+        // TODO check addEmployee
+        getFragmentManager().beginTransaction().add(R.id.addEmployee, addEmployeeFragment).commit();
+
+
+
     }
 }
