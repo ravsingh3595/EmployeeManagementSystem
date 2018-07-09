@@ -2,6 +2,7 @@ package com.androidproject.employeemanagementsystem.userInterface.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.androidproject.employeemanagementsystem.R;
+import com.androidproject.employeemanagementsystem.db.DBHelper;
 import com.androidproject.employeemanagementsystem.db.DBUser;
 
 public class LoginScreenActivity extends AppCompatActivity {
@@ -86,7 +88,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                         finish();
                     } else {
 
-                        Toast.makeText(LoginScreenActivity.this, "UserID/password invalid", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginScreenActivity.this, "UserID/password invalid ", Toast.LENGTH_LONG).show();
 
                     }
                 }
@@ -163,5 +165,50 @@ SharedPreferences mSharedPreferences = this.getSharedPreferences(getString(R.str
 
             }
         });
+
+
+        public void readImage()
+    {
+        DBHelper dbHelper = new DBHelper(LoginScreenActivity.this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        // Define a projection that specifies which columns from the database
+        // you will actually use after this query.
+        String[] projection = {"emailId", "password"};
+
+        // Filter results WHERE "title" = 'My Title'
+        String selection = "emailId" + " = ?";
+
+        long rows = DatabaseUtils.queryNumEntries(db, "tblPayroll");
+        int a = (int)rows;
+        Log.d(TAG, String.valueOf(a));
+
+        for (int i = 1; i <= a; i++) {
+            String[] names = {String.valueOf(i)};
+            Cursor cursor = db.query(
+                    "tblImageData",   // The table to query
+                    projection,             // The array of columns to return (pass null to get all)
+                    selection,              // The columns for the WHERE clause
+                    id,                     // The values for the WHERE clause
+                    null,           // don't group the rows
+                    null,            // don't filter by row groups
+                    null            // The sort order
+            );
+
+            Log.d(TAG, (String.valueOf(cursor.getColumnCount())));
+            Log.d(TAG, cursor.getColumnName(1));
+            if (null != cursor) {
+                cursor.moveToNext();
+                Log.d(TAG, "first" + cursor.getString(0) + cursor.getString(1));
+                mImageUrls.add(cursor.getString(1));
+                image.setLink(cursor.getString(1));
+                mNames.add(cursor.getString(0));
+                image.setName(cursor.getString(0));
+
+                Log.d(TAG, "added");
+                initRecyclerView();
+                Log.d(TAG, "initialized");
+            }
+        }
 
  */

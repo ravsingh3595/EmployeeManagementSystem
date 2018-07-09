@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.androidproject.employeemanagementsystem.model.user.User;
 
@@ -141,20 +142,19 @@ public class DBUser
                 null,
                 null);
 
-        boolean a = false;
+
         if(cursor !=null)
         {
-
-            if(cursor.getCount() == 1)
+            if(cursor.getCount() >=1 )
             {
-                a = true;
+                Log.d("DBUser inside", String.valueOf(cursor.getCount()));
+                return true;
+
             }
         }
-        else
-            {
-                a = false;
-            }
-        return a;
+
+        Log.d("DBUser outside", String.valueOf(cursor.getCount()) );
+        return false;
     }
 
 

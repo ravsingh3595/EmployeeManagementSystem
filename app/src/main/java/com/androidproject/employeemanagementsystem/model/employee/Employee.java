@@ -7,6 +7,7 @@ public abstract class Employee {
     private String name;
     private int age;
     private Vehicle vehicle;
+    private Employee employee;
 
     public Employee()
     {
@@ -50,6 +51,14 @@ public abstract class Employee {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public abstract float calEarnings();

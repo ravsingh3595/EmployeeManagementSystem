@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper
         String payrollTable = "CREATE TABLE tblPayroll(" +
                 " employeeId INTEGER PRIMARY KEY ," +
                 " fullName TEXT default null," +
-                " birthDate DATE default null," +
+                " birthDate INTEGER default null," +
                 " employeeType INTEGER default null," +
                 " rate FLOAT default null," +
                 " hoursWorked FLOAT default null," +

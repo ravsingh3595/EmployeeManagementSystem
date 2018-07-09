@@ -19,13 +19,6 @@ public class HomeActivity extends AppCompatActivity {
         DBHelper mDBHelper = new DBHelper(this);
         SQLiteDatabase mSQLiteDatabase = mDBHelper.getWritableDatabase();
 
-        ContentValues mContentValues = new ContentValues();
-        mContentValues.put("fullName", "RAvneet");
-        mContentValues.put("birthDate", 12/12/2019);
-
-        mSQLiteDatabase.insert("tbtPayroll", null, mContentValues);
-
-        mDBHelper.close();
 
 
     }
