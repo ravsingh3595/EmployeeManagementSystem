@@ -10,6 +10,7 @@ public class Employee implements Parcelable{
     private String name;
     private int age;
     private Vehicle vehicle;
+    private Employee employee;
 
     public Employee() { }
 
@@ -68,6 +69,17 @@ public class Employee implements Parcelable{
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
+
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+
 
     public float calEarnings(){
         return  0.0F;

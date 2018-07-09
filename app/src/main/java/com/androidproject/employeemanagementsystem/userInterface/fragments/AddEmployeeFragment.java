@@ -148,6 +148,7 @@ public class AddEmployeeFragment extends Fragment {
             {
                 case R.id.rbParttime:
                     linearParttime.setVisibility(View.VISIBLE);
+
                     break;
 
                 case R.id.rbIntern:

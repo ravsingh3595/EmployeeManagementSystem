@@ -1,8 +1,12 @@
 package com.androidproject.employeemanagementsystem.userInterface.activities;
 
 import android.content.Intent;
-import android.os.Bundle;
+
+import android.util.Log;
+import android.util.Patterns;
+
 import android.support.v7.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,23 +59,38 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (validate()) {
-                    user.setFullname(edtFullname.getText().toString());
-                    user.setEmail(edtEmail.getText().toString());
-                    user.setPassword(edtPassword.getText().toString());
-                    dbUser.insertUser(user);
-                    dbUser.getAllUser();
-                    goToLogin();
-                }
-//                Toast.makeText(SignUpActivity.this, "Incorrect Password, Please try again later", Toast.LENGTH_LONG).show();
-//
-//                Intent i = new Intent(SignUpActivity.this, LoginScreenActivity.class);
-//                startActivity(i);
-//                finish();
 
+
+                    Log.d("DBUser outside", String.valueOf(validate()));
+                    Log.d("DBUser inside", String.valueOf(isEmailValid(edtEmail.getText().toString())));
+
+                    if(isEmailValid(edtEmail.getText().toString()))
+                    {
+                        Log.d("DBUser inside", String.valueOf(isEmailValid(edtEmail.getText().toString())));
+                        user.setFullname(edtFullname.getText().toString());
+                        user.setEmail(edtEmail.getText().toString());
+                        user.setPassword(edtPassword.getText().toString());
+                        dbUser.insertUser(user);
+                        dbUser.getAllUser();
+                    }
+                    else {
+                        Toast.makeText(SignUpActivity.this, "Invalid Email Id, Please try again later", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else {
+                    Toast.makeText(SignUpActivity.this, "Password Didn't match, Please try again later", Toast.LENGTH_LONG).show();
+                }
+                Intent i = new Intent(SignUpActivity.this, LoginScreenActivity.class);
+                startActivity(i);
+                finish();
             }
         });
     }
 
+    boolean isEmailValid(CharSequence email) {
+
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 
     public boolean validate() {
         if (edtFullname.getText().toString().isEmpty()) {
