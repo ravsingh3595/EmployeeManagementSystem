@@ -18,7 +18,6 @@ import com.androidproject.employeemanagementsystem.db.DBUser;
 
 public class LoginScreenActivity extends AppCompatActivity {
 
-
     private Button btnLogin;
     private Button btnSignUp;
     private EditText edtEmail;
@@ -33,6 +32,9 @@ public class LoginScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_screen);
 
         initView();
+
+        // hide action bar
+        getSupportActionBar().hide();
 
         //1 - Create Shared Preferences Object
         mSharedPreferences = getSharedPreferences(getString(R.string.Preferences),MODE_PRIVATE);
@@ -55,11 +57,12 @@ public class LoginScreenActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(TextUtils.isEmpty(edtEmail.getText()) || edtEmail.getText().toString().length() == 0)
                 {
-                    edtEmail.setError("Please Enter User Name");
+                    edtEmail.setError("Please Enter email address");
+                }
+                else if(TextUtils.isEmpty(edtPassword.getText()) || edtPassword.getText().toString().length() == 0){
+                    edtPassword.setError("Please Enter Password");
                 }
                 else {
 
@@ -83,7 +86,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                         //7 - Save changes permanently to shared preferences
                         mEditor.apply();
 
-                        Intent intent = new Intent(LoginScreenActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(LoginScreenActivity.this, MainTabActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
