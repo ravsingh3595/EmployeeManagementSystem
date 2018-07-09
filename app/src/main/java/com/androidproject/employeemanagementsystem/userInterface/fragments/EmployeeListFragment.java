@@ -1,26 +1,42 @@
 package com.androidproject.employeemanagementsystem.userInterface.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.androidproject.employeemanagementsystem.EmployeeListAdapter;
 import com.androidproject.employeemanagementsystem.R;
+import com.androidproject.employeemanagementsystem.model.employee.Employee;
 import com.androidproject.employeemanagementsystem.model.employeelist.EmployeeListItem;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
 import butterknife.Unbinder;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class EmployeeListFragment extends Fragment {
+
+    ArrayList<Employee> employeeArrayList = new ArrayList<>();
+
     @BindView(R.id.listEmplyee)
     ListView listEmplyee;
     Unbinder unbinder;
+    @BindView(R.id.constraintLayout)
+    RelativeLayout constraintLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,9 +47,30 @@ public class EmployeeListFragment extends Fragment {
         // 1. pass context and data to the custom adapter
         EmployeeListAdapter adapter = new EmployeeListAdapter(getActivity(), generateData());
 
-
         // 3. setListAdapter
         listEmplyee.setAdapter(adapter);
+
+        // 4. list click
+        listEmplyee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // send data to employee detail activity
+                Intent intent = new Intent(getActivity(), EmployeeDetailFragment.class);
+                Bundle bundles = new Bundle();
+                bundles.putParcelable("employee", employeeArrayList.get(position));
+                startActivity(intent);
+                Log.e("id", "Selected index " + position);
+//
+//                EmployeeDetailFragment employeeDetailFragment = new EmployeeDetailFragment();
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.linearTop, employeeDetailFragment);
+//                fragmentTransaction.commit();
+
+
+            }
+        });
+
 
         return rootView;
     }
@@ -58,12 +95,9 @@ public class EmployeeListFragment extends Fragment {
         items.add(new EmployeeListItem("Item 2", "Second Item on the list"));
         items.add(new EmployeeListItem("Item 3", "Third Item on the list"));
 
-        return items;
-    }
+        /* NOTE: -------------- UNCOMMENT CODE WHEN DATA IS GET FROM DATABASE ---------------- */
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+
+        return items;
     }
 }
