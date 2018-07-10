@@ -26,7 +26,7 @@ public class Intern extends Employee implements Serializable{
         this.schoolName = schoolName;
     }
 
-    public float calEarnings()
+    public double calEarnings()
     {
         return 1000;
     }

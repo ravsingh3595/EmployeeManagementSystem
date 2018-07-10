@@ -6,37 +6,37 @@ import java.io.Serializable;
 
 public class FullTime extends Employee implements Serializable {
 
-    private float salary;
-    private float bonus;
+    private double salary;
+    private double bonus;
 
     public FullTime()
     {
         super();
     }
 
-    public FullTime(String name, int age, float salary, float bonus) {
+    public FullTime(String name, int age, double salary, double bonus) {
         super(name, age);
         this.salary = salary;
         this.bonus = bonus;
     }
 
-    public float getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
-    public float getBonus() {
+    public double getBonus() {
         return bonus;
     }
 
-    public void setBonus(float bonus) {
+    public void setBonus(double bonus) {
         this.bonus = bonus;
     }
 
-    public float calEarnings()
+    public double calEarnings()
     {
         return (getSalary() + getBonus());
     }
