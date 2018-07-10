@@ -1,6 +1,8 @@
 package com.androidproject.employeemanagementsystem.model.vehicle;
 
-public abstract class Vehicle {
+import java.io.Serializable;
+
+public abstract class Vehicle implements Serializable {
 
     private String company;
     private String plate;

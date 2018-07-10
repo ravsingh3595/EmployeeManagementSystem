@@ -1,6 +1,8 @@
 package com.androidproject.employeemanagementsystem.model.vehicle;
 
-public class Car extends Vehicle {
+import java.io.Serializable;
+
+public class Car extends Vehicle implements Serializable {
 
     private float storageCapacity;
     private int seatCount;

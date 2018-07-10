@@ -56,7 +56,9 @@ public class EmployeeListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // send data to employee detail activity
+
                 Intent intent = new Intent(getActivity(), EmployeeDetailActivity.class);
+
 //                Bundle bundles = new Bundle();
 //                bundles.putParcelable("employee", employeeArrayList.get(position));
                 startActivity(intent);

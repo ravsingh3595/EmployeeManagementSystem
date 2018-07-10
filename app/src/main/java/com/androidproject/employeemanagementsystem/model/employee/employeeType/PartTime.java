@@ -2,39 +2,41 @@ package com.androidproject.employeemanagementsystem.model.employee.employeeType;
 
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
 
-public abstract class PartTime extends Employee {
+import java.io.Serializable;
 
-    private float rate;
-    private float hoursWorked;
+public abstract class PartTime extends Employee implements Serializable {
+
+    private double rate;
+    private double hoursWorked;
 
     public PartTime()
     {
         super();
     }
 
-    public PartTime(String name, int age, float rate, float hoursWorked) {
+    public PartTime(String name, int age, double rate, double hoursWorked) {
         super(name, age);
         this.rate = rate;
         this.hoursWorked = hoursWorked;
     }
 
-    public float getRate() {
+    public double getRate() {
         return rate;
     }
 
-    public void setRate(float rate) {
+    public void setRate(double rate) {
         this.rate = rate;
     }
 
-    public float getHoursWorked() {
+    public double getHoursWorked() {
         return hoursWorked;
     }
 
-    public void setHoursWorked(float hoursWorked) {
+    public void setHoursWorked(double hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
 
-    public abstract float calEarnings();
+    public abstract double calEarnings();
 
     @Override
     public void printMyData()

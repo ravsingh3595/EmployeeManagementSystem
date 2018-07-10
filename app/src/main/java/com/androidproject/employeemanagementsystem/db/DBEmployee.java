@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.androidproject.employeemanagementsystem.SingletonClass;
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
@@ -27,7 +28,7 @@ public class DBEmployee {
     }
 
 
-    public void insertUser(Employee employee) {
+    public void insertEmployee(Employee employee) {
         dbHelper = new DBHelper(context);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         ContentValues values = getContentValuesObject(employee);
@@ -58,7 +59,7 @@ public class DBEmployee {
 
     }
 
-    public ArrayList<Employee> getAllUser() {
+    public ArrayList<Employee> getAllUser(Employee employee) {
         dbHelper = new DBHelper(context);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
@@ -74,11 +75,44 @@ public class DBEmployee {
         if (cursor != null) {
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
-//                   Employee employee = new Employee();
-//                    user.setEmail(cursor.getString(0));
-//                    user.setPassword(cursor.getString(1));
-//                    userArrayList.add(user);
-//                    Log.d("DB", user.getEmail() + " : " + user.getPassword());
+                    /*
+                     " employeeId INTEGER PRIMARY KEY ," + 1
+                " fullName TEXT default null," + 2
+                " birthDate INTEGER default null," + 3
+                " employeeType INTEGER default null," + 4
+                " rate FLOAT default null," + 5
+                " hoursWorked FLOAT default null," + 6
+                " fixedAmount FLOAT default null," + 7
+                " commissionPercent FLOAT default null," + 8
+                " schoolName TEXT default null," + 9
+                " salary FLOAT default null," + 10
+                " bonus FLOAT default null," + 11
+                " totalPay FLOAT default null," + 12
+                " vehicleType INTEGER default null," + 13
+                " make TEXT default null," + 14
+                " plate TEXT default null," + 15
+                " vehicleColour TEXT default null," + 16
+                " manufacturingYear INTEGER default null," + 17
+                " isInsurance BOOLEAN default null)";
+
+                     */
+                    if (employee instanceof CommissionBasedPartTime){
+
+                        employee = new CommissionBasedPartTime(cursor.getString(1), cursor.getInt(2), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(8));
+                    }
+                    if (employee instanceof FixedBasedPartTime){
+
+                        employee = new FixedBasedPartTime(cursor.getString(1), cursor.getInt(2), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7));
+                    }
+                    if (employee instanceof Intern){
+
+                        employee = new Intern(cursor.getString(0), cursor.getInt(1), cursor.getString(9));
+                    }
+                    if (employee instanceof FullTime){
+
+                        employee = new FullTime(cursor.getString(1), cursor.getInt(2), cursor.getFloat(10), cursor.getFloat(11));
+                    }
+
                 }
             }
         }
@@ -91,15 +125,17 @@ public class DBEmployee {
     private ContentValues getContentValuesObject(Employee employee){
 
         ContentValues values =  new ContentValues();
-        values.put("name", employee.getName());
-        values.put("birthdate", employee.getCalBirthYear());
+        values.put("fullName", employee.getName());
+        values.put("birthDate", employee.getCalBirthYear());
         values.put("employeeType", employee.getEmployee());
+        Log.d("ContentValues", "0");
 
         if (employee.getVehicle() != null){
             values.put("make", employee.getVehicle().getCompany());
             values.put("plate", employee.getVehicle().getPlate());
             values.put("vehicleColour", employee.getVehicle().getColour());
             values.put("manufacturingYear", employee.getVehicle().getYear());
+            Log.d("ContentValues", "vehicle");
         }
         if (employee instanceof CommissionBasedPartTime){
             CommissionBasedPartTime com = new CommissionBasedPartTime();
@@ -107,6 +143,7 @@ public class DBEmployee {
             values.put("rate", com.getRate());
             values.put("commissionPercent", com.getCommissionPercentage());
             values.put("totalPay", com.calEarnings());
+            Log.d("ContentValues", "com");
         }
         if (employee instanceof FixedBasedPartTime){
             FixedBasedPartTime fix = new FixedBasedPartTime();
@@ -114,42 +151,23 @@ public class DBEmployee {
             values.put("rate", fix.getRate());
             values.put("fixedAmount", fix.getFixedAmount());
             values.put("totalPay", fix.calEarnings());
+            Log.d("ContentValues", "fix");
         }
         if (employee instanceof Intern){
             Intern intern = new Intern();
             values.put("schoolName", intern.getSchoolName());
             values.put("totalPay", intern.calEarnings());
+            Log.d("ContentValues", "intern");
         }
         if (employee instanceof FullTime){
             FullTime fullTime = new FullTime();
             values.put("salary", fullTime.getSalary());
             values.put("bonus", fullTime.getBonus());
             values.put("totalPay", fullTime.calEarnings());
+            Log.d("ContentValues", "Fulltime");
         }
 
         return values;
     }
 
 }
-
-/*
-        String payrollTable = "CREATE TABLE tblPayroll(" +
-                " employeeId INTEGER PRIMARY KEY ," +
-                " fullName TEXT default null," +
-                " birthDate INTEGER default null," +
-                " employeeType INTEGER default null," +
-                " rate FLOAT default null," +
-                " hoursWorked FLOAT default null," +
-                " fixedAmount FLOAT default null," +
-                " commissionPercent FLOAT default null," +
-                " schoolName TEXT default null," +
-                " salary FLOAT default null," +
-                " bonus FLOAT default null," +
-                " totalPay FLOAT default null," +
-                " vehicleType INTEGER default null," +
-                " make TEXT default null," +
-                " plate TEXT default null," +
-                " vehicleColour TEXT default null," +
-                " manufacturingYear INTEGER default null," +
-                " isInsurance BOOLEAN default null)";
-         */

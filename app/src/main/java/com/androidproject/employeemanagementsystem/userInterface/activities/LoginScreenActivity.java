@@ -91,7 +91,7 @@ public class LoginScreenActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(LoginScreenActivity.this, SignUpActivity.class);
                 startActivity(i);
-                finish();
+//                finish();
             }
         });
     }

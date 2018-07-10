@@ -2,13 +2,18 @@ package com.androidproject.employeemanagementsystem.model.employee;
 
 import com.androidproject.employeemanagementsystem.model.vehicle.Vehicle;
 
-public abstract class Employee {
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public abstract class Employee implements Serializable{
 
     private String name;
     private int age;
     private Vehicle vehicle;
     private String employee;
     private int employeeId;
+
 
     public Employee()
     {
@@ -43,7 +48,8 @@ public abstract class Employee {
 
     public int getCalBirthYear()
     {
-        return (2018-age);
+        Calendar now = new GregorianCalendar();
+        return now.getWeekYear() - age;
     }
 
     public Vehicle getVehicle() {
@@ -69,7 +75,7 @@ public abstract class Employee {
         this.employeeId = employeeId;
     }
 
-    public abstract float calEarnings();
+    public abstract double calEarnings();
     {
 
     }

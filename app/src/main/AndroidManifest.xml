@@ -29,11 +29,16 @@
         <activity android:name=".userInterface.activities.HomeActivity" />
         <activity
             android:name=".userInterface.activities.SignUpActivity"
+            android:parentActivityName=".userInterface.activities.LoginScreenActivity"
+
             android:label="Sign up">
         </activity>
         <activity android:name=".PdfActivity" />
         <activity android:name=".userInterface.activities.EmployeeDetailActivity"
             android:parentActivityName=".userInterface.activities.MainTabActivity"></activity>
+
+        <activity android:name=".userInterface.activities.AddEmployeeActivity"></activity>
+
     </application>
 
 </manifest>

@@ -7,9 +7,22 @@
     android:background="#1DE9B6"
     tools:context=".userInterface.activities.HomeActivity">
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.androidproject.employeemanagementsystem.userInterface.fragments.AddEmployeeFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/alertCheckbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="touch here"
+        android:onClick="showDialog">
+    </Button>
+
+    <Button
+        android:id="@+id/pdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generate PDF"
+        android:onClick="generatePdf">
+    </Button>
+
+
+
 </LinearLayout>
