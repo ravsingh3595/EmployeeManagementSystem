@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".userInterface.activities.MainTabActivity$PlaceholderFragment"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+<!--<ScrollView-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--tools:context=".userInterface.activities.MainTabActivity$PlaceholderFragment"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fillViewport="true">-->
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    android:fillViewport="true" >
 
 <RelativeLayout
 
@@ -80,6 +85,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/enter_d_o_b"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:inputType="textPersonName" />
     </android.support.design.widget.TextInputLayout>
 
@@ -137,19 +146,70 @@
     </RadioGroup>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_address"
+        android:id="@+id/input_layout_street"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rgGender"
         android:layout_marginRight="20dp">
 
         <EditText
-            android:id="@+id/edtAddress"
+            android:id="@+id/edtStreet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:hint="@string/enter_Address" />
+            android:hint="Enter Street" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_street"
+        android:layout_marginRight="20dp">
+
+        <EditText
+            android:id="@+id/edtCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:hint="Enter City" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_province"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_city"
+        android:layout_marginRight="20dp">
+
+        <EditText
+            android:id="@+id/edtProvince"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:hint="Enter Province" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_province"
+        android:layout_marginRight="20dp">
+
+        <EditText
+            android:id="@+id/edtCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:hint="Enter Province" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -157,24 +217,13 @@
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/input_layout_address"
+        android:layout_below="@+id/input_layout_country"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="Save" />
-
-
-
-    <Button
-        android:id="@+id/btnShowLoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:layout_below="@+id/btnSave"
-        android:text="show Location" />
 
 
 </RelativeLayout>

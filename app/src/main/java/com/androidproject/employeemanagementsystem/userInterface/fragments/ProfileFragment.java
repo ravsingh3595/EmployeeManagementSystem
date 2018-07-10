@@ -18,6 +18,9 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,8 +32,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidproject.employeemanagementsystem.R;
+import com.androidproject.employeemanagementsystem.model.user.User;
 import com.androidproject.employeemanagementsystem.util.pdf.Utility;
 
 import java.io.ByteArrayOutputStream;
@@ -70,19 +75,22 @@ public class ProfileFragment extends Fragment {
     RadioButton radioButton;
     @BindView(R.id.rgGender)
     RadioGroup rgGender;
-    @BindView(R.id.edtAddress)
-    EditText edtAddress;
-    @BindView(R.id.input_layout_address)
-    TextInputLayout inputLayoutAddress;
     @BindView(R.id.btnSave)
     Button btnSave;
     @BindView(R.id.btnUpload)
     Button btnUpload;
     @BindView(R.id.constraintLayout)
     RelativeLayout constraintLayout;
+
     Unbinder unbinder;
-    @BindView(R.id.btnShowLoc)
-    Button btnShowLoc;
+    @BindView(R.id.edtStreet)
+    EditText edtStreet;
+    @BindView(R.id.edtCity)
+    EditText edtCity;
+    @BindView(R.id.edtProvince)
+    EditText edtProvince;
+    @BindView(R.id.edtCountry)
+    EditText edtCountry;
 
     // variables and constants
     private DatePickerDialog datePickerDialog;
@@ -94,6 +102,8 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         unbinder = ButterKnife.bind(this, rootView);
+
+        setHasOptionsMenu(true);
         return rootView;
     }
 
@@ -105,7 +115,9 @@ public class ProfileFragment extends Fragment {
                 selectDateButtonTapped();
                 break;
             case R.id.btnSave:
-                validate();
+                if (validate()) {
+                    // write update query
+                }
                 break;
             case R.id.btnUpload:
                 selectImage();
@@ -113,39 +125,78 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    @OnClick(R.id.btnShowLoc)
-    public void onViewClicked() {
-//        String url = "geo:0,0?q=Brooklyn+Bridge,New+York,NY";
-//        String url = "geo:0,0?q=601 Yorkminster,Mississauga,ON,Canada";
 
-        Geocoder geocoder = new Geocoder(getActivity());
-        List<Address> addresses;
-        try {
-            addresses = geocoder.getFromLocationName("601 Yorkminster,Mississauga,ON,Canada", 1);
-            if(addresses.size() > 0) {
-                double latitude= addresses.get(0).getLatitude();
-                double longitude= addresses.get(0).getLongitude();
-                String url = "geo: " + latitude + "," + longitude;
 
-                Uri uri = Uri.parse(url);
-                showMap(uri);
-            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+    public boolean validate() {
+        if (edtName.getText().toString().isEmpty()) {
+            edtName.setError("Please enter name");
+            return false;
+        } else if (edtDOB.getText().toString().isEmpty()) {
+            edtDOB.setError("Please select date");
+            return false;
+        } else if(validateAddress() == false){
+            return false;
         }
+        return true;
 
     }
 
-
-    public void validate(){
-        if(edtName.getText().toString().isEmpty()){
-            edtName.setError("Please enter name");
-        }else if(edtAddress.getText().toString().isEmpty()){
-            edtAddress.setError("Please enter address");
-        }else if(edtDOB.getText().toString().isEmpty()){
-            edtDOB.setError("Please select date");
+    public boolean validateAddress(){
+        if (edtStreet.getText().toString().isEmpty()) {
+            edtStreet.setError("Please enter street");
+            return false;
+        }else if(edtCity.getText().toString().isEmpty()){
+            edtCity.setError("Please enter city");
+            return  false;
+        }else if(edtProvince.getText().toString().isEmpty()){
+            edtProvince.setError("Please enter province");
+            return  false;
+        }else if(edtCountry.getText().toString().isEmpty()){
+            edtCountry.setError("Please enter country");
+            return  false;
         }
+        return true;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.profile_action_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_menu_profile:
+
+                if(validateAddress()){
+
+                    String url = edtStreet.getText().toString() + "," + edtCity.getText().toString() + "," + edtProvince.getText().toString() + "," + edtCountry.getText().toString();
+                    Geocoder geocoder = new Geocoder(getActivity());
+                    List<Address> addresses;
+                    try {
+                        addresses = geocoder.getFromLocationName(url, 1);
+                        if (addresses.size() > 0) {
+                            double latitude = addresses.get(0).getLatitude();
+                            double longitude = addresses.get(0).getLongitude();
+
+//                intent.setData(Uri.parse("geo:27.173891,78.042068?z=16"));
+                            url = "geo:" + latitude + "," + longitude + "?z=16";
+
+                            Uri uri = Uri.parse(url);
+                            showMap(uri);
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
@@ -168,6 +219,21 @@ public class ProfileFragment extends Fragment {
             }
         }, mYear, mMonth, mDay);
         datePickerDialog.show();
+    }
+
+    User populateData(){
+        User user =  new User();
+        user.setFullname(edtName.getText().toString());
+        user.setBirthDate(edtDOB.getText().toString());
+
+        // gender
+
+        // city
+        user.setCity(edtCity.getText().toString());
+        user.setProvince(edtProvince.getText().toString());
+        user.setCountry(edtCountry.getText().toString());
+//        user.setPicture(imgProfile.get);
+        return user;
     }
 
 
@@ -294,5 +360,10 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        null.unbind();
+//    }
 }
 

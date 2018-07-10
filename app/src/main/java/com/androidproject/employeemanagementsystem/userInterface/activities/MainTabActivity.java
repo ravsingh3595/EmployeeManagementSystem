@@ -1,8 +1,14 @@
 package com.androidproject.employeemanagementsystem.userInterface.activities;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -11,15 +17,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidproject.employeemanagementsystem.R;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.EmployeeDetailFragment;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.EmployeeListFragment;
+import com.androidproject.employeemanagementsystem.userInterface.fragments.HelpFragment;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.HomeFragment;
 import com.androidproject.employeemanagementsystem.userInterface.fragments.ProfileFragment;
 
@@ -72,29 +84,118 @@ public class MainTabActivity extends AppCompatActivity {
     }
 
 
-
-    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_tab, menu);
-        return true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main_tab, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_help:
+                // download pdf code
+                Toast.makeText(MainTabActivity.this, "download pdf", Toast.LENGTH_SHORT).show();
+                showDialog();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+    /* open dialouge */
+    public void showDialog()
+    {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainTabActivity.this);
+        alertDialogBuilder.setTitle("Alert Message");
+        alertDialogBuilder.setMessage("Here we will show the details");
+        alertDialogBuilder.setCancelable(false);
+
+        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                showMessage("Cancel - no");
+            }
+        });
+
+        alertDialogBuilder.setPositiveButton("Call", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                makeCall();
+                dialogInterface.dismiss();
+                // TODO
+                // change the class to whereeve the final destination
+//                Intent mIntent = new Intent(MainTabActivity.this, HomeActivity.class);
+//                startActivity(mIntent);
+            }
+        });
+
+        alertDialogBuilder.setNeutralButton("Email", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                sendEmail();
+            }
+        });
+
+        AlertDialog mAlertDialog = alertDialogBuilder.create();
+        mAlertDialog.show();
+    }
+
+    void makeCall(){
+        String phoneNo = "6476852023";
+        if(!TextUtils.isEmpty(phoneNo)) {
+            String dial = "tel:" + phoneNo;
+            Intent phoneItent = new Intent(Intent.ACTION_DIAL, Uri.parse(dial));
+            if(phoneItent.resolveActivity(MainTabActivity.this.getPackageManager()) != null)
+            {
+                startActivity(phoneItent);
+            }
+            else
+            {
+                Toast.makeText(MainTabActivity.this,"No application to handle Phone call",Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            Toast.makeText(MainTabActivity.this, "Enter a phone number", Toast.LENGTH_SHORT).show();
         }
 
-        return super.onOptionsItemSelected(item);
-    }*/
+    }
+
+    void sendEmail(){
+        String to = "employee@gmail.com";
+        String subject = "Subject";
+        String body = "Body";
+        Intent emailIntent = new Intent(Intent.ACTION_SEND); //Intent.ACTION_SENDTO
+        emailIntent.setType("text/plain");
+//        emailIntent.setData(Uri.parse("mailto:" + to));
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+        emailIntent.setType("message/rfc822");
+
+        if(emailIntent.resolveActivity(MainTabActivity.this.getPackageManager()) != null)
+        {
+            startActivity(Intent.createChooser(emailIntent, "Select Email Client"));
+        }
+        else
+        {
+            Toast.makeText(MainTabActivity.this,"No application to handle Email",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void showMessage(String msg)
+    {
+        Toast toast = Toast.makeText(MainTabActivity.this, msg, Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+
 
     /**
      * A placeholder fragment containing a simple view.
@@ -154,7 +255,7 @@ public class MainTabActivity extends AppCompatActivity {
                     return  employeeListTab;
                 case 2: ProfileFragment profileFragment = new ProfileFragment();
                     return  profileFragment;
-                case 3: EmployeeDetailFragment helpFragment = new EmployeeDetailFragment();
+                case 3: HelpFragment helpFragment = new HelpFragment();
                     return helpFragment;
                 default:
                     return null;

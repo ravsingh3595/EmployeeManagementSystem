@@ -2,9 +2,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.androidproject.employeemanagementsystem.userInterface.activities.MainTabActivity">
+    <!--<item-->
+        <!--android:id="@+id/action_settings"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/action_save"-->
+        <!--app:showAsAction="never" />-->
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:id="@+id/action_help"
+        android:icon="@android:drawable/ic_menu_help"
         android:title="@string/action_save"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>
