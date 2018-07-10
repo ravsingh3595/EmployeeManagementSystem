@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.androidproject.employeemanagementsystem.R;
 
@@ -14,5 +15,10 @@ public class HelpFragment extends Fragment{
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_help, container, false);
         return rootView;
+
+//        WebView view = new WebView(getActivity());
+//        view.getSettings().setJavaScriptEnabled(true);
+//        view.loadUrl("file:///Users/user/Desktop/Instruction.html");
+//        setContentView(view);
     }
 }
