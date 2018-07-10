@@ -75,7 +75,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                         //7 - Save changes permanently to shared preferences
                         mEditor.apply();
 
-                        Intent intent = new Intent(LoginScreenActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(LoginScreenActivity.this, MainTabActivity.class);
                         startActivity(intent);
                         finish();
                     } else {

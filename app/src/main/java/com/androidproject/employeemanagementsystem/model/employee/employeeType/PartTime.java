@@ -2,7 +2,9 @@ package com.androidproject.employeemanagementsystem.model.employee.employeeType;
 
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
 
-public abstract class PartTime extends Employee {
+import java.io.Serializable;
+
+public abstract class PartTime extends Employee implements Serializable {
 
     private double rate;
     private double hoursWorked;

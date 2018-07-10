@@ -1,6 +1,8 @@
 package com.androidproject.employeemanagementsystem.model.vehicle;
 
-public class Motorcycle extends Vehicle{
+import java.io.Serializable;
+
+public class Motorcycle extends Vehicle implements Serializable{
 
     float enginePower;
     float topSpeed;

@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.androidproject.employeemanagementsystem.R;
+import com.androidproject.employeemanagementsystem.model.employee.Employee;
+import com.androidproject.employeemanagementsystem.util.pdf.GenerateEmployeeDetailsPDF;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -76,5 +78,11 @@ public class HomeActivity extends AppCompatActivity {
     {
         Toast toast = Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT);
         toast.show();
+    }
+    public void generatePdf(View view){
+        Employee employee = (Employee) getIntent().getExtras().getSerializable("employee");
+        GenerateEmployeeDetailsPDF pdf = new GenerateEmployeeDetailsPDF();
+        pdf.generateEmployeeDetailsPDF(employee);
+        pdf.setBackToTopLink();
     }
 }

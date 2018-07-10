@@ -48,7 +48,6 @@ public class GenerateEmployeeDetailsPDF {
             document.add(paragraph1);
             document.add(new Paragraph("Group Number :7"));
 
-//            Anchor Name =new Anchor("Group Number: 7");
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
@@ -208,13 +207,6 @@ public class GenerateEmployeeDetailsPDF {
                 t.addCell(c1);
                 t.addCell(String.valueOf(c.getYear()));
 
-                c1 = new PdfPCell(new Phrase("Storage Capacity", headerFont));
-                t.addCell(c1);
-                t.addCell(String.valueOf(c.getStorageCapacity()+" litres"));
-
-                c1 = new PdfPCell(new Phrase("Seat Count", headerFont));
-                t.addCell(c1);
-                t.addCell(String.valueOf(c.getSeatCount()));
             }
             else if(e.getVehicle() instanceof Motorcycle)
             {
@@ -239,14 +231,6 @@ public class GenerateEmployeeDetailsPDF {
                 c1 = new PdfPCell(new Phrase("Manufacturing Year", headerFont));
                 t.addCell(c1);
                 t.addCell(String.valueOf(m.getYear()));
-
-                c1 = new PdfPCell(new Phrase("Power", headerFont));
-                t.addCell(c1);
-                t.addCell(String.valueOf(m.getEnginePower()+" CC"));
-
-                c1 = new PdfPCell(new Phrase("Top Speed", headerFont));
-                t.addCell(c1);
-                t.addCell(String.valueOf(m.getTopSpeed()+" Km/hr"));
             }
             document.add(t);
         } catch (DocumentException ex) {
@@ -254,10 +238,10 @@ public class GenerateEmployeeDetailsPDF {
         }
 
     }
-    public void setBackToTopLink(double totalPayroll) {
+    public void setBackToTopLink(/*double totalPayroll*/) {
         try {
-            Paragraph total = new Paragraph(new Phrase("Total Earning of all employees: "+"C$"+totalPayroll ));
-            document.add(total);
+//            Paragraph total = new Paragraph(new Phrase("Total Earning of all employees: "+"C$"+totalPayroll ));
+//            document.add(total);
             Anchor anchor2 = new Anchor("Back To Top");
             anchor2.setReference("#BackToTop");
             document.add(anchor2);
