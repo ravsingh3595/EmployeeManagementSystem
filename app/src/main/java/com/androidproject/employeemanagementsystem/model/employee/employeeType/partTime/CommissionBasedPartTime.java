@@ -7,27 +7,27 @@ import java.io.Serializable;
 
 public class CommissionBasedPartTime extends PartTime implements Serializable {
 
-    private float commissionPercentage;
+    private double commissionPercentage;
 
     public CommissionBasedPartTime()
     {
         super();
     }
 
-    public CommissionBasedPartTime(String name, int age, float rate, float hoursWorked, float commissionPercentage) {
+    public CommissionBasedPartTime(String name, int age, double rate, double hoursWorked, double commissionPercentage) {
         super(name, age, rate, hoursWorked);
         this.commissionPercentage = commissionPercentage;
     }
 
-    public float getCommissionPercentage() {
+    public double getCommissionPercentage() {
         return commissionPercentage;
     }
 
-    public void setCommissionPercentage(float commissionPercentage) {
+    public void setCommissionPercentage(double commissionPercentage) {
         this.commissionPercentage = commissionPercentage;
     }
 
-    public float calEarnings(){
+    public double calEarnings(){
         return ((getRate()*getHoursWorked()) + ((commissionPercentage/100) *(getRate()*getHoursWorked())));
     }
     @Override

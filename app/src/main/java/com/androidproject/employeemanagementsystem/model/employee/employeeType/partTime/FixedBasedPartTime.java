@@ -7,27 +7,27 @@ import java.io.Serializable;
 
 public class FixedBasedPartTime extends PartTime implements Serializable {
 
-    private float fixedAmount;
+    private double fixedAmount;
 
     public FixedBasedPartTime()
     {
         super();
     }
 
-    public FixedBasedPartTime(String name, int age, float rate, float hoursWorked, float fixedAmount) {
+    public FixedBasedPartTime(String name, int age, double rate, double hoursWorked, double fixedAmount) {
         super(name, age, rate, hoursWorked);
         this.fixedAmount = fixedAmount;
     }
 
-    public float getFixedAmount() {
+    public double getFixedAmount() {
         return fixedAmount;
     }
 
-    public void setFixedAmount(float fixedAmount) {
+    public void setFixedAmount(double fixedAmount) {
         this.fixedAmount = fixedAmount;
     }
 
-    public float calEarnings()
+    public double calEarnings()
     {
         return ((getRate()*getHoursWorked()) + getFixedAmount() + (getRate()*getHoursWorked()));
     }

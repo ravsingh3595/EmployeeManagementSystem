@@ -25,16 +25,16 @@ public class DBHelper extends SQLiteOpenHelper
                 " employeeId INTEGER PRIMARY KEY ," +
                 " fullName TEXT default null," +
                 " birthDate INTEGER default null," +
-                " employeeType INTEGER default null," +
-                " rate FLOAT default null," +
-                " hoursWorked FLOAT default null," +
-                " fixedAmount FLOAT default null," +
-                " commissionPercent FLOAT default null," +
+                " employeeType TEXT default null," +
+                " rate DOUBLE default null," +
+                " hoursWorked DOUBLE default null," +
+                " fixedAmount DOUBLE default null," +
+                " commissionPercent DOUBLE default null," +
                 " schoolName TEXT default null," +
-                " salary FLOAT default null," +
-                " bonus FLOAT default null," +
-                " totalPay FLOAT default null," +
-                " vehicleType INTEGER default null," +
+                " salary DOUBLE default null," +
+                " bonus DOUBLE default null," +
+                " totalPay DOUBLE default null," +
+                " vehicleType TEXT default null," +
                 " make TEXT default null," +
                 " plate TEXT default null," +
                 " vehicleColour TEXT default null," +
