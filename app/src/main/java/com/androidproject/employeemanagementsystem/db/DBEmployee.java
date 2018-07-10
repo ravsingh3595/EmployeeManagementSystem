@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.view.WindowId;
 
 import com.androidproject.employeemanagementsystem.SingletonClass;
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
@@ -37,14 +38,12 @@ public class DBEmployee {
         database.close();
     }
 
-    public void updateUser(Employee employee) {
+    public void updateEmployee(Employee employee) {
         dbHelper = new DBHelper(context);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         ContentValues values = getContentValuesObject(employee);
 
-        //edit this
-        // TODO
-        database.update("tblPayroll",  values, "employeeId" + "=?", new String[]{String.valueOf(employee.getEmployeeId())});
+        database.update("tblPayroll",  values, "fullName" + "=?", new String[]{(employee.getName())});
         database.close();
 
     }
@@ -54,11 +53,51 @@ public class DBEmployee {
         dbHelper = new DBHelper(context);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
-        // TODO
-        database.delete("tblPayroll", "employeeId" + "=?", new String[]{String.valueOf(employee.getEmployeeId())});
+        database.delete("tblPayroll", "fullName" + "=?", new String[]{(employee.getName())});
         database.close();
 
     }
+
+//    public ArrayList<Employee> getAllUser() {
+//        dbHelper = new DBHelper(context);
+//        SQLiteDatabase database = dbHelper.getWritableDatabase();
+//        ArrayList<Employee> employeeArrayList = new ArrayList<>();
+//        String selectQuery = "SELECT * FROM tblPayroll";
+//        Cursor cursor =database.rawQuery(selectQuery, null);
+//
+//        if (cursor.moveToFirst()){
+//            do {
+//                 /*
+//                     " employeeId INTEGER PRIMARY KEY ," + 1
+//                " fullName TEXT default null," + 2
+//                " birthDate INTEGER default null," + 3
+//                " employeeType INTEGER default null," + 4
+//                " rate FLOAT default null," + 5
+//                " hoursWorked FLOAT default null," + 6
+//                " fixedAmount FLOAT default null," + 7
+//                " commissionPercent FLOAT default null," + 8
+//                " schoolName TEXT default null," + 9
+//                " salary FLOAT default null," + 10
+//                " bonus FLOAT default null," + 11
+//                " totalPay FLOAT default null," + 12
+//                " vehicleType INTEGER default null," + 13
+//                " make TEXT default null," + 14
+//                " plate TEXT default null," + 15
+//                " vehicleColour TEXT default null," + 16
+//                " manufacturingYear INTEGER default null," + 17
+//                " isInsurance BOOLEAN default null)";
+//
+//                     */
+////                Employee employee = getPayrollObject(cursor);
+//
+//
+//               // employeeArrayList.add(employee);
+//            }while (cursor.moveToNext());
+//        }
+//        database.close();
+//        return employeeArrayList;
+//    }
+
 
     public ArrayList<Employee> getAllUser(Employee employee) {
         dbHelper = new DBHelper(context);
@@ -76,45 +115,42 @@ public class DBEmployee {
         if (cursor != null) {
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
-                    /*
-                     " employeeId INTEGER PRIMARY KEY ," + 1
-                " fullName TEXT default null," + 2
-                " birthDate INTEGER default null," + 3
-                " employeeType INTEGER default null," + 4
-                " rate FLOAT default null," + 5
-                " hoursWorked FLOAT default null," + 6
-                " fixedAmount FLOAT default null," + 7
-                " commissionPercent FLOAT default null," + 8
-                " schoolName TEXT default null," + 9
-                " salary FLOAT default null," + 10
-                " bonus FLOAT default null," + 11
-                " totalPay FLOAT default null," + 12
-                " vehicleType INTEGER default null," + 13
-                " make TEXT default null," + 14
-                " plate TEXT default null," + 15
-                " vehicleColour TEXT default null," + 16
-                " manufacturingYear INTEGER default null," + 17
-                " isInsurance BOOLEAN default null)";
 
-                     */
-                   // if (Vehicle != null)
+                    employee.setName(cursor.getString(1));
+                    employee.setCalBirthYear(cursor.getInt(2));
+                    employee.setEmployee(cursor.getString(3));
+                    if (employee.getVehicle() != null){
+                        employee.getVehicle().setCompany(cursor.getString(13));
+                        employee.getVehicle().setPlate(cursor.getString(14));
+                        employee.getVehicle().setColour(cursor.getString(15));
+                        employee.getVehicle().setYear(cursor.getInt(16));
+
+                    }
                     if (employee instanceof CommissionBasedPartTime){
-
-                        employee = new CommissionBasedPartTime(cursor.getString(1), cursor.getInt(2), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(8));
+                        CommissionBasedPartTime com = (CommissionBasedPartTime) employee;
+                        com.setRate(cursor.getDouble(4));
+                        com.setHoursWorked(cursor.getDouble(5));
+                        com.setCommissionPercentage(cursor.getDouble(7));
+                        employee = com;
                     }
                     if (employee instanceof FixedBasedPartTime){
-
-                        employee = new FixedBasedPartTime(cursor.getString(1), cursor.getInt(2), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7));
+                        FixedBasedPartTime fix = (FixedBasedPartTime) employee;
+                        fix.setRate(cursor.getDouble(4));
+                        fix.setHoursWorked(cursor.getDouble(5));
+                        fix.setFixedAmount(cursor.getDouble(6));
+                        employee = fix;
                     }
                     if (employee instanceof Intern){
-
-                        employee = new Intern(cursor.getString(0), cursor.getInt(1), cursor.getString(9));
+                        Intern intern =(Intern) employee;
+                        intern.setSchoolName(cursor.getString(8));
+                        employee = intern;
                     }
                     if (employee instanceof FullTime){
-
-                        employee = new FullTime(cursor.getString(1), cursor.getInt(2), cursor.getFloat(10), cursor.getFloat(11));
-                    }
-
+                        FullTime fullTime = (FullTime) employee;
+                        fullTime.setSalary(cursor.getDouble(9));
+                        fullTime.setBonus(cursor.getDouble(10));
+                        }
+                    employeeArrayList.add(employee);
                 }
             }
         }

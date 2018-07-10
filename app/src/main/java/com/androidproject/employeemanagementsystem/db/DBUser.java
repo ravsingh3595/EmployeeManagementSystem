@@ -56,21 +56,17 @@ public class DBUser
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(USER_FULL_NAME, user.getFullname());
-        contentValues.put(USER_PASSWORD, user.getPassword());
-        contentValues.put(USER_PICTURE, user.getPicture());
+        //contentValues.put(USER_PASSWORD, user.getPassword());
+        //contentValues.put(USER_PICTURE, user.getPicture());
         contentValues.put(USER_BIRTH_DATE, user.getBirthDate());
         contentValues.put(USER_ADDRESS, user.getAddress());
         contentValues.put(USER_CITY, user.getCity());
         contentValues.put(USER_PROVINCE, user.getProvince());
         contentValues.put(USER_COUNTRY, user.getCountry());
-        contentValues.put(USER_LATITUDE, user.getLatitude());
-        contentValues.put(USER_LONGITUDE, user.getLongitude());
-
-
+        //contentValues.put(USER_LATITUDE, user.getLatitude());
+        //contentValues.put(USER_LONGITUDE, user.getLongitude());
         database.update(TABLE_USER,  contentValues, USER_EMAIL + "=?", new String[]{user.getEmail()});
-
         database.close();
-
     }
 
 
@@ -78,11 +74,8 @@ public class DBUser
     {
         dbHelper = new DBHelper(context);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-
         database.delete(TABLE_USER, USER_EMAIL + "=?", new String[]{user.getEmail()});
-
         database.close();
-
     }
 
     public ArrayList<User> getAllUser()
@@ -117,8 +110,6 @@ public class DBUser
                     user.setCountry(cursor.getString(8));
                     user.setLatitude(cursor.getDouble(9));
                     user.setLongitude(cursor.getDouble(10));
-
-
                     userArrayList.add(user);
                 }
             }
