@@ -10,9 +10,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:gravity="center_vertical|center_horizontal"
-        android:text="@string/sign_up"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="48sp"
+        android:text="Register With Us!"
+        android:textColor="@color/colorAccent"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
     <EditText

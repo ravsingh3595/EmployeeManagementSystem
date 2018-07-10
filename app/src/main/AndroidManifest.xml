@@ -21,21 +21,19 @@
         </activity>
         <activity
             android:name=".userInterface.activities.SplashScreenActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".userInterface.activities.MainTabActivity"
             android:label="Employee"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".userInterface.activities.HomeActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".userInterface.activities.HomeActivity" />
         <activity
             android:name=".userInterface.activities.SignUpActivity"
-            android:label="Sign up"
-            android:parentActivityName=".userInterface.activities.LoginScreenActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".userInterface.activities.LoginScreenActivity" />
+            android:label="Sign up">
         </activity>
-        <activity android:name=".PdfActivity"></activity>
+        <activity android:name=".PdfActivity" />
+        <activity android:name=".userInterface.activities.EmployeeDetailActivity"
+            android:parentActivityName=".userInterface.activities.MainTabActivity"></activity>
     </application>
 
 </manifest>

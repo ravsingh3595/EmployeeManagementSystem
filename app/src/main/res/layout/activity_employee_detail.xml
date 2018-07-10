@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/constraintLayout"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".userInterface.activities.EmployeeDetailActivity">
+
+<LinearLayout
+    android:id="@+id/linearTop"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/colorPrimaryDark"
+    android:padding="5dp"
+    >
+
+    <TextView
+        android:id="@+id/txtText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Employee Detail"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Sonia Rani"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
+</LinearLayout>
+
+<TextView
+    android:id="@+id/txtDobTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:text="Date of Birth: "
+    android:textStyle="bold"
+    android:layout_below="@+id/linearTop"/>
+
+<TextView
+    android:id="@+id/txtDob"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toRightOf="@+id/txtDobTitle"
+    android:layout_below="@+id/linearTop"
+    android:layout_marginLeft="10dp"
+    android:text="21/08/1993"
+    android:textStyle="bold" />
+
+<RelativeLayout
+    android:id="@+id/relativeVehical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="5dp"
+    android:background="@color/colorBackground1"
+    android:layout_below="@+id/txtDobTitle"
+    >
+
+    <TextView
+        android:id="@+id/txtVehicalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Employee has Vehical: " />
+
+    <TextView
+        android:id="@+id/txtVehical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/txtVehicalTitle"
+        android:text="Car " />
+
+    <TextView
+        android:id="@+id/txtModelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/txtVehicalTitle"
+        android:text="Vehical Model: " />
+
+    <TextView
+        android:id="@+id/txtModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/txtModelTitle"
+        android:layout_below="@+id/txtVehicalTitle"
+        android:text="Audi " />
+
+    <TextView
+        android:id="@+id/txtPlateNumberTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/txtModelTitle"
+        android:text="Vehical Plate Number: " />
+
+    <TextView
+        android:id="@+id/txtPlateNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/txtPlateNumberTitle"
+        android:layout_below="@+id/txtModelTitle"
+        android:text="PB 32 64606 " />
+</RelativeLayout>
+
+<TextView
+    android:id="@+id/txtEmployeeType"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/relativeVehical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:text="Employee is Commission based PartTime "
+    android:textStyle="bold" />
+
+<RelativeLayout
+    android:id="@+id/relativePartTime"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_below="@+id/txtEmployeeType">
+
+    <TextView
+        android:id="@+id/txtHourWorkedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Hours worked: " />
+
+    <TextView
+        android:id="@+id/txtHourWorked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/txtHourWorkedTitle"
+        android:text="5 hours " />
+
+
+    <TextView
+        android:id="@+id/txtRateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtHourWorkedTitle"
+        android:layout_marginTop="5dp"
+        android:text="Rate: " />
+
+    <TextView
+        android:id="@+id/txtRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/txtHourWorkedTitle"
+        android:layout_toRightOf="@+id/txtRateTitle"
+        android:text="15 " />
+
+    <!--change to fixed amount if part time fixed employee-->
+    <TextView
+        android:id="@+id/txtCommOrFixedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/txtRateTitle"
+        android:text="Commission Percentage: " />
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/txtRateTitle"
+        android:layout_toRightOf="@+id/txtCommOrFixedTitle"
+        android:text="5%" />
+
+
+</RelativeLayout>
+
+<RelativeLayout
+    android:id="@+id/relativeIntern"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_below="@+id/relativePartTime">
+
+    <TextView
+        android:id="@+id/txtCollegeNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lambton College: "
+        />
+
+    <TextView
+        android:id="@+id/txtCollegeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRateTitle"
+        android:layout_toRightOf="@+id/txtCollegeNameTitle"
+        android:text="5%" />
+
+
+</RelativeLayout>
+
+<RelativeLayout
+    android:id="@+id/relativeFullTime"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_below="@+id/relativeIntern">
+
+    <TextView
+        android:id="@+id/txtSalaryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salary: "
+        />
+
+    <TextView
+        android:id="@+id/txtSalary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeIntern"
+        android:layout_toRightOf="@+id/txtSalaryTitle"
+        android:text="5%" />
+
+
+    <TextView
+        android:id="@+id/txtBonusTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtSalaryTitle"
+        android:layout_marginTop="5dp"
+        android:text="Bonus: "
+        />
+
+    <TextView
+        android:id="@+id/txtBonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtSalary"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/txtBonusTitle"
+        android:text="5%" />
+
+</RelativeLayout>
+
+
+</RelativeLayout>

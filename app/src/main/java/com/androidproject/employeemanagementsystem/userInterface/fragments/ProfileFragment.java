@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.icu.util.Calendar;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -36,6 +38,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,10 +93,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-
-
         unbinder = ButterKnife.bind(this, rootView);
-
         return rootView;
     }
 
@@ -105,6 +105,7 @@ public class ProfileFragment extends Fragment {
                 selectDateButtonTapped();
                 break;
             case R.id.btnSave:
+                validate();
                 break;
             case R.id.btnUpload:
                 selectImage();
@@ -114,10 +115,37 @@ public class ProfileFragment extends Fragment {
 
     @OnClick(R.id.btnShowLoc)
     public void onViewClicked() {
-        String url = "geo:0,0?q=Brooklyn+Bridge,New+York,NY";
+//        String url = "geo:0,0?q=Brooklyn+Bridge,New+York,NY";
+//        String url = "geo:0,0?q=601 Yorkminster,Mississauga,ON,Canada";
 
-        Uri uri = Uri.parse(url);
-        showMap(uri);
+        Geocoder geocoder = new Geocoder(getActivity());
+        List<Address> addresses;
+        try {
+            addresses = geocoder.getFromLocationName("601 Yorkminster,Mississauga,ON,Canada", 1);
+            if(addresses.size() > 0) {
+                double latitude= addresses.get(0).getLatitude();
+                double longitude= addresses.get(0).getLongitude();
+                String url = "geo: " + latitude + "," + longitude;
+
+                Uri uri = Uri.parse(url);
+                showMap(uri);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void validate(){
+        if(edtName.getText().toString().isEmpty()){
+            edtName.setError("Please enter name");
+        }else if(edtAddress.getText().toString().isEmpty()){
+            edtAddress.setError("Please enter address");
+        }else if(edtDOB.getText().toString().isEmpty()){
+            edtDOB.setError("Please select date");
+        }
     }
 
 

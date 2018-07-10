@@ -17,6 +17,7 @@ import com.androidproject.employeemanagementsystem.EmployeeListAdapter;
 import com.androidproject.employeemanagementsystem.R;
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
 import com.androidproject.employeemanagementsystem.model.employeelist.EmployeeListItem;
+import com.androidproject.employeemanagementsystem.userInterface.activities.EmployeeDetailActivity;
 
 import java.util.ArrayList;
 
@@ -55,9 +56,9 @@ public class EmployeeListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // send data to employee detail activity
-                Intent intent = new Intent(getActivity(), EmployeeDetailFragment.class);
-                Bundle bundles = new Bundle();
-                bundles.putParcelable("employee", employeeArrayList.get(position));
+                Intent intent = new Intent(getActivity(), EmployeeDetailActivity.class);
+//                Bundle bundles = new Bundle();
+//                bundles.putParcelable("employee", employeeArrayList.get(position));
                 startActivity(intent);
                 Log.e("id", "Selected index " + position);
 //

@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgProfile"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp">
 
         <EditText
@@ -70,14 +71,14 @@
         android:layout_below="@+id/layoutName"
         android:layout_marginLeft="10dp"
         android:layout_weight="1"
-
+        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp">
 
         <EditText
             android:id="@+id/edtDOB"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:hint="@string/enter_d_o_b"
             android:inputType="textPersonName" />
     </android.support.design.widget.TextInputLayout>
@@ -87,6 +88,7 @@
         android:id="@+id/btnSelectDate"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/calendar" />
 
 </LinearLayout>
@@ -100,6 +102,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/linearDob"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
         android:text="Gender:"
         android:textStyle="bold" />
@@ -145,6 +148,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:hint="@string/enter_Address" />
 
     </android.support.design.widget.TextInputLayout>
@@ -156,6 +160,7 @@
         android:layout_below="@+id/input_layout_address"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="Save" />
@@ -166,10 +171,9 @@
         android:id="@+id/btnShowLoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="48dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="10dp"
+        android:layout_below="@+id/btnSave"
         android:text="show Location" />
 
 
