@@ -80,7 +80,8 @@ public class HomeActivity extends AppCompatActivity {
         toast.show();
     }
     public void generatePdf(View view){
-        Employee employee = (Employee) getIntent().getExtras().getSerializable("employee");
+
+        Employee employee = (Employee) getIntent().getSerializableExtra("employee");
         GenerateEmployeeDetailsPDF pdf = new GenerateEmployeeDetailsPDF();
         pdf.generateEmployeeDetailsPDF(employee);
         pdf.setBackToTopLink();
