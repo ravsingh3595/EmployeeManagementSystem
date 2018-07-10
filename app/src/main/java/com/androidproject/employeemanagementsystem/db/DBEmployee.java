@@ -15,6 +15,7 @@ import com.androidproject.employeemanagementsystem.model.employee.employeeType.P
 import com.androidproject.employeemanagementsystem.model.employee.employeeType.partTime.CommissionBasedPartTime;
 import com.androidproject.employeemanagementsystem.model.employee.employeeType.partTime.FixedBasedPartTime;
 import com.androidproject.employeemanagementsystem.model.user.User;
+import com.androidproject.employeemanagementsystem.model.vehicle.Vehicle;
 
 import java.util.ArrayList;
 
@@ -96,6 +97,7 @@ public class DBEmployee {
                 " isInsurance BOOLEAN default null)";
 
                      */
+                   // if (Vehicle != null)
                     if (employee instanceof CommissionBasedPartTime){
 
                         employee = new CommissionBasedPartTime(cursor.getString(1), cursor.getInt(2), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(8));
@@ -138,7 +140,7 @@ public class DBEmployee {
             Log.d("ContentValues", "vehicle");
         }
         if (employee instanceof CommissionBasedPartTime){
-            CommissionBasedPartTime com = new CommissionBasedPartTime();
+            CommissionBasedPartTime com = (CommissionBasedPartTime) employee;
             values.put("hoursWorked", com.getHoursWorked());
             values.put("rate", com.getRate());
             values.put("commissionPercent", com.getCommissionPercentage());
@@ -146,7 +148,7 @@ public class DBEmployee {
             Log.d("ContentValues", "com");
         }
         if (employee instanceof FixedBasedPartTime){
-            FixedBasedPartTime fix = new FixedBasedPartTime();
+            FixedBasedPartTime fix = (FixedBasedPartTime) employee;
             values.put("hoursWorked", fix.getHoursWorked());
             values.put("rate", fix.getRate());
             values.put("fixedAmount", fix.getFixedAmount());
@@ -154,19 +156,18 @@ public class DBEmployee {
             Log.d("ContentValues", "fix");
         }
         if (employee instanceof Intern){
-            Intern intern = new Intern();
+            Intern intern = (Intern) employee;
             values.put("schoolName", intern.getSchoolName());
             values.put("totalPay", intern.calEarnings());
-            Log.d("ContentValues", "intern");
+            Log.d("ContentValues", intern.getSchoolName());
         }
         if (employee instanceof FullTime){
-            FullTime fullTime = new FullTime();
+            FullTime fullTime = (FullTime) employee;
             values.put("salary", fullTime.getSalary());
             values.put("bonus", fullTime.getBonus());
             values.put("totalPay", fullTime.calEarnings());
             Log.d("ContentValues", "Fulltime");
         }
-
         return values;
     }
 

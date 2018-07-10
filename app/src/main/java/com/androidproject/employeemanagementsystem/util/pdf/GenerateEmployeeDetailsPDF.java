@@ -35,18 +35,18 @@ public class GenerateEmployeeDetailsPDF {
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("EmployeeInformation.pdf"));
             document.open();
-            addMetaData();
+            addMetaData(document);
             document.add(new Paragraph(new Date().toString()));
             Anchor anchorTarget = new Anchor("User Information");
             anchorTarget.setName("BackToTop");
-            document.add(new Paragraph("Group Number :7"));
+            //document.add(new Paragraph("Group Number :7"));
             Paragraph paragraph1 = new Paragraph();
             paragraph1.setFont(FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD, new CMYKColor(0, 255, 0, 0)));
 
             paragraph1.setSpacingBefore(50);
             paragraph1.add(anchorTarget);
             document.add(paragraph1);
-            document.add(new Paragraph("Group Number :7"));
+//            document.add(new Paragraph("Group Number :7"));
 
         } catch (DocumentException e) {
             e.printStackTrace();
@@ -62,7 +62,7 @@ public class GenerateEmployeeDetailsPDF {
                 new CMYKColor(0, 255, 255, 17));
     }
 
-    private void addMetaData() {
+    private void addMetaData(Document document) {
         document.addTitle("My first PDF");
         document.addCreationDate();
         document.addSubject("Using iText");
