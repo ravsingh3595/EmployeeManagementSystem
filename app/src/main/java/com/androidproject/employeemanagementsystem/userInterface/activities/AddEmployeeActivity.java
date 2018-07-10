@@ -110,6 +110,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
     Employee employee = null;
     Vehicle vehicle = null;
     DBEmployee dbEmployee = new DBEmployee(AddEmployeeActivity.this);
+    Bundle bundle= new Bundle();
 
 
     @Override
@@ -192,13 +193,15 @@ public class AddEmployeeActivity extends AppCompatActivity {
     @OnClick(R.id.btnSavePayroll)
     public void onViewClicked() {
 
+        bundle.putSerializable("employee", addData());
         Log.d("DataEntry", "2");
         dbEmployee.insertEmployee(addData());
         Log.d("DataEntry", "3");
         //dbEmployee.getAllUser(employee);
-        Intent mIntent = new Intent(AddEmployeeActivity.this, MainTabActivity.class);
+        Intent mIntent = new Intent(AddEmployeeActivity.this, HomeActivity.class);
         Log.d("DataEntry", "4");
-        startActivity(mIntent);
+        mIntent.putExtras(bundle);
+        AddEmployeeActivity.this.startActivity(mIntent);
 
     }
 
