@@ -8,16 +8,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.androidproject.employeemanagementsystem.model.employee.Employee;
 import com.androidproject.employeemanagementsystem.model.employeelist.EmployeeListItem;
 
 import java.util.ArrayList;
 
-public class EmployeeListAdapter extends ArrayAdapter<EmployeeListItem> {
+public class EmployeeListAdapter extends ArrayAdapter<Employee> {
 
     private final Context context;
-    private final ArrayList<EmployeeListItem> itemsArrayList;
+    private final ArrayList<Employee> itemsArrayList;
 
-    public EmployeeListAdapter(Context context, ArrayList<EmployeeListItem> itemsArrayList) {
+    public EmployeeListAdapter(Context context, ArrayList<Employee> itemsArrayList) {
 
         super(context, R.layout.employee_list_row, itemsArrayList);
 
@@ -39,8 +40,17 @@ public class EmployeeListAdapter extends ArrayAdapter<EmployeeListItem> {
         TextView valueView = (TextView) rowView.findViewById(R.id.txtType);
 
         // 4. Set the text for textView
-        labelView.setText(itemsArrayList.get(position).getTitle());
-        valueView.setText(itemsArrayList.get(position).getDescription());
+        if(itemsArrayList.size() > 0 && itemsArrayList.get(position) != null){
+            if(!itemsArrayList.get(position).getName().isEmpty()){
+                labelView.setText(itemsArrayList.get(position).getName());
+            }
+            if(!itemsArrayList.get(position).getEmployee().isEmpty()) {
+                valueView.setText(itemsArrayList.get(position).getEmployee());
+            }
+
+
+        }
+
 
         // 5. retrn rowView
 

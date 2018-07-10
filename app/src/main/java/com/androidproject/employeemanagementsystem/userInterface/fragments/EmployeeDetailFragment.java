@@ -35,8 +35,8 @@ public class EmployeeDetailFragment extends Fragment {
     TextView txtDob;
     @BindView(R.id.txtVehicalTitle)
     TextView txtVehicalTitle;
-    @BindView(R.id.txtVehical)
-    TextView txtVehical;
+//    @BindView(R.id.txtVehical)
+//    TextView txtVehical;
     @BindView(R.id.txtModelTitle)
     TextView txtModelTitle;
     @BindView(R.id.txtModel)
@@ -59,8 +59,8 @@ public class EmployeeDetailFragment extends Fragment {
     TextView txtRate;
     @BindView(R.id.txtCommOrFixedTitle)
     TextView txtCommOrFixedTitle;
-    @BindView(R.id.txt)
-    TextView txt;
+//    @BindView(R.id.txt)
+//    TextView txt;
     @BindView(R.id.relativePartTime)
     RelativeLayout relativePartTime;
     @BindView(R.id.txtCollegeNameTitle)

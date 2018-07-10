@@ -45,8 +45,11 @@ public class EmployeeListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_employee_list, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
+        Employee employee = (Employee) getActivity().getIntent().getSerializableExtra("employee");
+        employeeArrayList.add(employee);
+
         // 1. pass context and data to the custom adapter
-        EmployeeListAdapter adapter = new EmployeeListAdapter(getActivity(), generateData());
+        EmployeeListAdapter adapter = new EmployeeListAdapter(getActivity(), employeeArrayList);
 
         // 3. setListAdapter
         listEmplyee.setAdapter(adapter);
@@ -57,19 +60,11 @@ public class EmployeeListFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // send data to employee detail activity
 
-                Intent intent = new Intent(getActivity(), EmployeeDetailActivity.class);
 
-//                Bundle bundles = new Bundle();
-//                bundles.putParcelable("employee", employeeArrayList.get(position));
+                Intent intent = new Intent(getActivity(), EmployeeDetailActivity.class);
+                intent.putExtra("employee", employeeArrayList.get(position));
                 startActivity(intent);
                 Log.e("id", "Selected index " + position);
-//
-//                EmployeeDetailFragment employeeDetailFragment = new EmployeeDetailFragment();
-//                FragmentManager fragmentManager = getFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.linearTop, employeeDetailFragment);
-//                fragmentTransaction.commit();
-
 
             }
         });

@@ -198,7 +198,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
         dbEmployee.insertEmployee(addData());
         Log.d("DataEntry", "3");
         //dbEmployee.getAllUser(employee);
-        Intent mIntent = new Intent(AddEmployeeActivity.this, HomeActivity.class);
+        Intent mIntent = new Intent(AddEmployeeActivity.this, MainTabActivity.class);
         Log.d("DataEntry", "4");
         mIntent.putExtras(bundle);
         AddEmployeeActivity.this.startActivity(mIntent);

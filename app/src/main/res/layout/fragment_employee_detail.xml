@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="Date of Birth: "
+        android:text="Age: "
         android:textStyle="bold"
         android:layout_below="@+id/linearTop"/>
 
@@ -55,6 +55,15 @@
         android:text="21/08/1993"
         android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/txtVehicalTitle"
+            android:layout_below="@+id/txtDobTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="Employee has Vehical: " />
+
     <RelativeLayout
         android:id="@+id/relativeVehical"
         android:layout_width="match_parent"
@@ -62,21 +71,15 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:background="@color/colorBackground1"
-        android:layout_below="@+id/txtDobTitle"
+        android:layout_below="@+id/txtVehicalTitle"
         >
 
-        <TextView
-            android:id="@+id/txtVehicalTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Employee has Vehical: " />
-
-        <TextView
-            android:id="@+id/txtVehical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/txtVehicalTitle"
-            android:text="Car " />
+        <!--<TextView-->
+            <!--android:id="@+id/txtVehical"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_toRightOf="@+id/txtVehicalTitle"-->
+            <!--android:text="Car " />-->
 
         <TextView
             android:id="@+id/txtModelTitle"
@@ -173,7 +176,7 @@
             android:text="Commission Percentage: " />
 
         <TextView
-            android:id="@+id/txt"
+            android:id="@+id/txtCommPerOrFixedAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
