@@ -67,14 +67,14 @@ public class ProfileFragment extends Fragment {
     Button btnSelectDate;
     @BindView(R.id.linearDob)
     LinearLayout linearDob;
-    @BindView(R.id.tvGender)
-    TextView tvGender;
-    @BindView(R.id.radioButton2)
-    RadioButton radioButton2;
-    @BindView(R.id.radioButton)
-    RadioButton radioButton;
-    @BindView(R.id.rgGender)
-    RadioGroup rgGender;
+//    @BindView(R.id.tvGender)
+//    TextView tvGender;
+//    @BindView(R.id.radioButton2)
+//    RadioButton radioButton2;
+//    @BindView(R.id.radioButton)
+//    RadioButton radioButton;
+//    @BindView(R.id.rgGender)
+//    RadioGroup rgGender;
     @BindView(R.id.btnSave)
     Button btnSave;
     @BindView(R.id.btnUpload)
