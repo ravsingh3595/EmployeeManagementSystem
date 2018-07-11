@@ -142,67 +142,43 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 //            txtVehicalTitle.setText("Employee has no vehicle");
 //        }
 
-        if (employee instanceof Intern) {
-            Intern intern = (Intern) employee;
-            txtName.setText(intern.getName());
-            txtEmployeeType.setText("Employee is Intern");
-            relativeIntern.setVisibility(View.VISIBLE);
-            txtCollegeName.setText(intern.getSchoolName());
-            if(intern.getVehicle() != null)
-            {
-                if (intern.getVehicleType().equals("car"))
-                {
-                    Car car = new Car();
-                    txtVehicalTitle.setText("Employee has a car");
-                    txtModel.setText(car.getCompany());
-                    txtPlateNumber.setText(car.getPlate());
-                    relativeVehical.setVisibility(View.VISIBLE);
-                }
-                else if (intern.getVehicleType().equals("motor"))
-                {
-                    Motorcycle motorcycle = new Motorcycle();
-                    txtVehicalTitle.setText("Employee has a motorcycle");
-                    txtModel.setText(motorcycle.getCompany());
-                    txtPlateNumber.setText(motorcycle.getPlate());
-                    relativeVehical.setVisibility(View.VISIBLE);
-                }
-            }else
+        Log.d("DetailsActivity", "populate");
+        Log.d("DetailsActivity", String.valueOf(employee instanceof Intern));
+
+        if(employee.getVehicle() != null)
+        {
+            relativeVehical.setVisibility(View.VISIBLE);
+            txtVehicalTitle.setText("Employee has a car");
+            txtModel.setText(employee.getVehicle().getCompany());
+            txtPlateNumber.setText(employee.getVehicle().getPlate());
+            }
+            else
                 {
                     txtVehicalTitle.setText("Employee has no vehicle");
                 }
+        if (employee instanceof Intern) {
+            Intern intern = (Intern) employee;
+            Log.d("DetailActivity", "I "+intern.getSchoolName());
+            relativeIntern.setVisibility(View.VISIBLE);
+            txtName.setText(intern.getName());
+            txtEmployeeType.setText("Employee is Intern");
+            txtCollegeName.setText(intern.getSchoolName());
+
+
         }
         else if (employee instanceof FullTime) {
+
             FullTime fullTime = (FullTime) employee;
+            Log.d("DetailActivity", "F "+fullTime.getName());
             txtName.setText(fullTime.getName());
             txtEmployeeType.setText("Employee is Full Time");
             relativeFullTime.setVisibility(View.VISIBLE);
             txtSalary.setText(String.valueOf(fullTime.getSalary()));
             txtBonus.setText(String.valueOf(fullTime.getBonus()));
-            if(fullTime.getVehicle() != null)
-            {
-                if (fullTime.getVehicleType().equals("car"))
-                {
-                    Car car = new Car();
-                    txtVehicalTitle.setText("Employee has a car");
-                    txtModel.setText(car.getCompany());
-                    txtPlateNumber.setText(car.getPlate());
-                    relativeVehical.setVisibility(View.VISIBLE);
-                }
-                else if (fullTime.getVehicleType().equals("motor"))
-                {
-                    Motorcycle motorcycle = new Motorcycle();
-                    txtVehicalTitle.setText("Employee has a motorcycle");
-                    txtModel.setText(motorcycle.getCompany());
-                    txtPlateNumber.setText(motorcycle.getPlate());
-                    relativeVehical.setVisibility(View.VISIBLE);
-                }
-            }else
-            {
-                txtVehicalTitle.setText("Employee has no vehicle");
-            }
         }
         else if (employee instanceof CommissionBasedPartTime) {
             CommissionBasedPartTime commissionBasedPartTime = (CommissionBasedPartTime) employee;
+            Log.d("DetailActivity", "C "+commissionBasedPartTime.getName());
             txtName.setText(commissionBasedPartTime.getName());
             txtEmployeeType.setText("Employee is Commission based");
             txtHourWorked.setText(String.valueOf(commissionBasedPartTime.getHoursWorked()));
@@ -210,31 +186,10 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             txtCommOrFixedTitle.setText("Commition Percentage: ");
             txtCommPerOrFixedAmount.setText((String.valueOf(commissionBasedPartTime.getCommissionPercentage())) + "%");
             relativePartTime.setVisibility(View.VISIBLE);
-            if(commissionBasedPartTime.getVehicle() != null)
-            {
-                if (commissionBasedPartTime.getVehicleType().equals("car"))
-                {
-                    Car car = new Car();
-                    txtVehicalTitle.setText("Employee has a car");
-                    txtModel.setText(car.getCompany());
-                    txtPlateNumber.setText(car.getPlate());
-                    relativeVehical.setVisibility(View.VISIBLE);
-                }
-                else if (commissionBasedPartTime.getVehicleType().equals("motor"))
-                {
-                    Motorcycle motorcycle = new Motorcycle();
-                    txtVehicalTitle.setText("Employee has a motorcycle");
-                    txtModel.setText(motorcycle.getCompany());
-                    txtPlateNumber.setText(motorcycle.getPlate());
-                    relativeVehical.setVisibility(View.VISIBLE);
-                }
-            }else
-            {
-                txtVehicalTitle.setText("Employee has no vehicle");
-            }
         }
         else if (employee instanceof FixedBasedPartTime) {
             FixedBasedPartTime fixedBasedPartTime = (FixedBasedPartTime) employee;
+            Log.d("DetailActivity", "F "+fixedBasedPartTime.getName());
             txtName.setText(fixedBasedPartTime.getName());
             txtEmployeeType.setText("Employee is Fixed based");
             relativePartTime.setVisibility(View.VISIBLE);
@@ -242,28 +197,6 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             txtCommPerOrFixedAmount.setText(String.valueOf(fixedBasedPartTime.getFixedAmount()));
             txtHourWorked.setText(String.valueOf(fixedBasedPartTime.getHoursWorked()));
             txtRate.setText(String.valueOf(fixedBasedPartTime.getRate()));
-            if(fixedBasedPartTime.getVehicle() != null)
-            {
-                if (fixedBasedPartTime.getVehicleType().equals("car"))
-                {
-                    Car car = new Car();
-                    txtVehicalTitle.setText("Employee has a car");
-                    txtModel.setText(car.getCompany());
-                    txtPlateNumber.setText(car.getPlate());
-                    relativeVehical.setVisibility(View.VISIBLE);
-                }
-                else if (fixedBasedPartTime.getVehicleType().equals("motor"))
-                {
-                    Motorcycle motorcycle = new Motorcycle();
-                    txtVehicalTitle.setText("Employee has a motorcycle");
-                    txtModel.setText(motorcycle.getCompany());
-                    txtPlateNumber.setText(motorcycle.getPlate());
-                    relativeVehical.setVisibility(View.VISIBLE);
-                }
-            }else
-            {
-                txtVehicalTitle.setText("Employee has no vehicle");
-            }
         }
     }
 }
