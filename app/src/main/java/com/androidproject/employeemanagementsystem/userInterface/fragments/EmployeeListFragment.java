@@ -48,11 +48,8 @@ public class EmployeeListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_employee_list, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-//        Employee employee =
-// (Employee) getActivity().getIntent().getSerializableExtra("employee");
-
-        employeeArrayList = dbEmployee.getAllUser(getActivity());
-
+        Employee employee = (Employee) getActivity().getIntent().getSerializableExtra("employee");
+        employeeArrayList = dbEmployee.getAllUser(employee, getActivity());
 
         // 1. pass context and data to the custom adapter
         EmployeeListAdapter adapter = new EmployeeListAdapter(getActivity(), employeeArrayList);

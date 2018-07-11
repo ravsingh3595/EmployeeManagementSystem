@@ -195,10 +195,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
     public void onViewClicked() {
 
         bundle.putSerializable("employee", addData());
-        Log.d("DataEntry", "bundleDone");
         dbEmployee.insertEmployee(addData());
-        Log.d("DataEntry", "addDataDone");
-        //dbEmployee.getAllUser(employee);
         Intent mIntent = new Intent(AddEmployeeActivity.this, MainTabActivity.class);
         Log.d("DataEntry", "IntentCreated");
         mIntent.putExtras(bundle);
@@ -221,7 +218,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
             intern.setEmployee("Intern");
             addVehicleData(intern);
             employee = intern;
-            Log.d("DataEntry", "Intern");
+            Log.d("DataEntry", intern.getName());
         }
         if (rbFulltime.isChecked()){
             name = edtName.getText().toString();
