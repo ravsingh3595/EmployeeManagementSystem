@@ -1,12 +1,16 @@
 package com.androidproject.employeemanagementsystem.model.user;
 
 
-public class User {
+import java.io.Serializable;
+
+import javax.crypto.SecretKey;
+
+public class User implements Serializable {
     private String full_name;
     private String email;
     private String password;
     private String picture;
-    private String  birthDate;
+    private String birthDate;
     private String address;
     private String city;
     private String province;

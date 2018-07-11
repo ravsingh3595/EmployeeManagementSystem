@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.androidproject.employeemanagementsystem.R;
 import com.androidproject.employeemanagementsystem.db.DBHelper;
 import com.androidproject.employeemanagementsystem.db.DBUser;
+import com.androidproject.employeemanagementsystem.model.user.User;
 
 public class LoginScreenActivity extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class LoginScreenActivity extends AppCompatActivity {
     private EditText edtPassword;
     private CheckBox ckbRememberMe;
     SharedPreferences mSharedPreferences;
+    User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +77,21 @@ public class LoginScreenActivity extends AppCompatActivity {
                         //7 - Save changes permanently to shared preferences
                         mEditor.apply();
 
+                        user.setFullname("MocUser");
+                        user.setEmail("user@abc.in");
+                        user.setPassword(edtPassword.getText().toString());
+                        user.setBirthDate("05/03/1995");
+                        user.setAddress("148 August Avenue");
+                        user.setCity("Scarborough");
+                        user.setProvince("Ontario");
+                        user.setCountry("Canada");
+                        user.setLatitude(43.696431);
+                        user.setLongitude(-79.283014);
+                        dbUser.updateUser(user,LoginScreenActivity.this);
                         Intent intent = new Intent(LoginScreenActivity.this, MainTabActivity.class);
+                        intent.putExtra("UserData", user);
                         startActivity(intent);
+                        //Toast.makeText(LoginScreenActivity.this, user.getAddress(), Toast.LENGTH_LONG).show();
                         finish();
                     } else {
 
