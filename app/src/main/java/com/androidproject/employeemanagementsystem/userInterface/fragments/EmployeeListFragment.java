@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 
 import com.androidproject.employeemanagementsystem.EmployeeListAdapter;
 import com.androidproject.employeemanagementsystem.R;
+import com.androidproject.employeemanagementsystem.db.DBEmployee;
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
 import com.androidproject.employeemanagementsystem.model.employeelist.EmployeeListItem;
 import com.androidproject.employeemanagementsystem.userInterface.activities.EmployeeDetailActivity;
@@ -35,9 +36,11 @@ public class EmployeeListFragment extends Fragment {
 
     @BindView(R.id.listEmplyee)
     ListView listEmplyee;
-    Unbinder unbinder;
     @BindView(R.id.constraintLayout)
     RelativeLayout constraintLayout;
+    Unbinder unbinder;
+
+    DBEmployee dbEmployee = new DBEmployee(getActivity());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,8 +48,11 @@ public class EmployeeListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_employee_list, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-        Employee employee = (Employee) getActivity().getIntent().getSerializableExtra("employee");
-        employeeArrayList.add(employee);
+//        Employee employee =
+// (Employee) getActivity().getIntent().getSerializableExtra("employee");
+
+        employeeArrayList = dbEmployee.getAllUser(getActivity());
+
 
         // 1. pass context and data to the custom adapter
         EmployeeListAdapter adapter = new EmployeeListAdapter(getActivity(), employeeArrayList);

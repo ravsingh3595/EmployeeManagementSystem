@@ -97,7 +97,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
 
     String name;
     int age = 0;
-    String department;
+    //String department;
     double rate;
     double hoursWorked;
     double salary;
@@ -105,10 +105,11 @@ public class AddEmployeeActivity extends AppCompatActivity {
     String schoolName;
     double commisionPer;
     double fixedAmount;
-    int manufacturingYear;
+    //int manufacturingYear;
 
-    Employee employee = null;
+//    Employee employee = new Employee();
     Vehicle vehicle = null;
+    Employee employee = null;
     DBEmployee dbEmployee = new DBEmployee(AddEmployeeActivity.this);
     Bundle bundle= new Bundle();
 
@@ -194,12 +195,12 @@ public class AddEmployeeActivity extends AppCompatActivity {
     public void onViewClicked() {
 
         bundle.putSerializable("employee", addData());
-        Log.d("DataEntry", "2");
+        Log.d("DataEntry", "bundleDone");
         dbEmployee.insertEmployee(addData());
-        Log.d("DataEntry", "3");
+        Log.d("DataEntry", "addDataDone");
         //dbEmployee.getAllUser(employee);
         Intent mIntent = new Intent(AddEmployeeActivity.this, MainTabActivity.class);
-        Log.d("DataEntry", "4");
+        Log.d("DataEntry", "IntentCreated");
         mIntent.putExtras(bundle);
         AddEmployeeActivity.this.startActivity(mIntent);
 
@@ -207,41 +208,19 @@ public class AddEmployeeActivity extends AppCompatActivity {
 
     public Employee addData(){
 
-        if (chkVehicle.isChecked()){
-            if (rbCar.isChecked()){
-                Car car = new Car();
-                car.setCompany(edtModel.getText().toString());
-                car.setPlate(edtplate.getText().toString());
-                car.setColour("black");
-                car.setYear(2015);
-                //employee.setVehicle(car);
-                vehicle = car;
-                Log.d("DataEntry", "car");
-            }
-            if (rbMotorcycle.isChecked()){
-                Motorcycle motorcycle = new Motorcycle();
-                motorcycle.setCompany(edtModel.getText().toString());
-                motorcycle.setPlate(edtplate.getText().toString());
-                motorcycle.setColour("black");
-                motorcycle.setYear(2015);
-                //employee.setVehicle(motorcycle);
-                vehicle = motorcycle;
-                Log.d("DataEntry", "motorcycle");
-            }
-        }
         if (rbIntern.isChecked()){
             name = edtName.getText().toString();
             age = Integer.parseInt(edtDob.getText().toString());
             schoolName = edtSchoolName.getText().toString();
-            Log.d("DataEntry", schoolName);
             Intern intern = new Intern();
             intern.setName(name);
             intern.setSchoolName(schoolName);
             intern.setCalBirthYear(age);
+            intern.setVehicle(vehicle);
+            intern.calEarnings();
+            intern.setEmployee("Intern");
+            addVehicleData(intern);
             employee = intern;
-            employee.setVehicle(vehicle);
-            employee.calEarnings();
-            employee.setEmployee("Intern");
             Log.d("DataEntry", "Intern");
         }
         if (rbFulltime.isChecked()){
@@ -249,15 +228,16 @@ public class AddEmployeeActivity extends AppCompatActivity {
             age = Integer.parseInt(edtDob.getText().toString());
             salary = Double.parseDouble(edtSalary.getText().toString());
             bonus = Double.parseDouble(edtBonus.getText().toString());
-            FullTime fullTime = new FullTime(name, age, salary, bonus);
-//            fullTime.setName(name);
-//            fullTime.setAge(age);
-//            fullTime.setSalary(salary);
-//            fullTime.setBonus(bonus);
+            FullTime fullTime = new FullTime();
+            fullTime.setName(name);
+            fullTime.setAge(age);
+            fullTime.setSalary(salary);
+            fullTime.setBonus(bonus);
+            fullTime.setVehicle(vehicle);
+            fullTime.setEmployee("FullTime");
+            fullTime.calEarnings();
+            addVehicleData(fullTime);
             employee = fullTime;
-            employee.setVehicle(vehicle);
-            employee.setEmployee("FullTime");
-            employee.calEarnings();
             Log.d("DataEntry", "Fulltime");
         }
         if (rbParttime.isChecked()){
@@ -269,15 +249,16 @@ public class AddEmployeeActivity extends AppCompatActivity {
                 hoursWorked = Double.parseDouble(edtHours.getText().toString());
                 commisionPer = Double.parseDouble(edtCommissionPerOrFixedAmt.getText().toString());
                 CommissionBasedPartTime com = new CommissionBasedPartTime();
-//                com.setName(name);
-//                com.setAge(age);
-//                com.setRate(rate);
-//                com.setHoursWorked(hoursWorked);
-//                com.setCommissionPercentage(commisionPer);
+                com.setName(name);
+                com.setAge(age);
+                com.setRate(rate);
+                com.setHoursWorked(hoursWorked);
+                com.setCommissionPercentage(commisionPer);
+                com.setVehicle(vehicle);
+                com.calEarnings();
+                com.setEmployee("Commission based");
+                addVehicleData(com);
                 employee = com;
-                employee.setVehicle(vehicle);
-                employee.calEarnings();
-                employee.setEmployee("Commission based");
                 Log.d("DataEntry", "com");
             }else
             {
@@ -286,21 +267,49 @@ public class AddEmployeeActivity extends AppCompatActivity {
                 rate = Double.parseDouble(edtRate.getText().toString());
                 hoursWorked = Double.parseDouble(edtHours.getText().toString());
                 fixedAmount = Double.parseDouble(edtCommissionPerOrFixedAmt.getText().toString());
-                FixedBasedPartTime fixedBasedPartTime = new FixedBasedPartTime(name, age, rate, hoursWorked, fixedAmount);
-//                fixedBasedPartTime.setName(name);
-//                fixedBasedPartTime.setAge(age);
-//                fixedBasedPartTime.setRate(rate);
-//                fixedBasedPartTime.setHoursWorked(hoursWorked);
-//                fixedBasedPartTime.setFixedAmount(fixedAmount);
-                employee = fixedBasedPartTime;
-                employee.setVehicle(vehicle);
-                employee.calEarnings();
-                employee.setEmployee("Fixed based");
+                FixedBasedPartTime fix = new FixedBasedPartTime();
+                fix.setName(name);
+                fix.setAge(age);
+                fix.setRate(rate);
+                fix.setHoursWorked(hoursWorked);
+                fix.setFixedAmount(fixedAmount);
+                fix.setVehicle(vehicle);
+                fix.calEarnings();
+                fix.setEmployee("Fixed based");
+                addVehicleData(fix);
+                employee = fix;
                 Log.d("DataEntry", "Fix");
             }
         }
-        Log.d("DataEntry", "0");
+        Log.d("DataEntry", "Finish");
         return employee;
+    }
+    public void addVehicleData(Employee emp)
+    {
+        if (chkVehicle.isChecked()){
+            if (rbCar.isChecked()){
+                Car car = new Car();
+                car.setCompany(edtModel.getText().toString());
+                car.setPlate(edtplate.getText().toString());
+                car.setColour("car");
+                car.setYear(2015);
+                emp.setVehicleType("car");
+                emp.setVehicle(car);
+                vehicle = car;
+                Log.d("DataEntry", "car");
+            }
+            if (rbMotorcycle.isChecked()){
+                Motorcycle motorcycle = new Motorcycle();
+                motorcycle.setCompany(edtModel.getText().toString());
+                motorcycle.setPlate(edtplate.getText().toString());
+                motorcycle.setColour("motor");
+                motorcycle.setYear(2015);
+                emp.setVehicleType("motor");
+                emp.setVehicle(motorcycle);
+                vehicle = motorcycle;
+                Log.d("DataEntry", "motorcycle");
+            }
+        }
     }
 }
 
