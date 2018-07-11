@@ -47,10 +47,11 @@ public class SignUpActivity extends AppCompatActivity {
                         Log.d("DBUser inside", String.valueOf(isEmailValid(edtEmail.getText().toString())));
                         user.setFullname(edtFullname.getText().toString());
                         user.setEmail(edtEmail.getText().toString());
-                        user.setPassword(edtPassword.getText().toString());
-                        dbUser.insertUser(user);
-                        dbUser.getAllUser();
+
+                        //dbUser.getAllUser();
+
                         Intent i = new Intent(SignUpActivity.this, LoginScreenActivity.class);
+                        i.putExtra("UserData", user);
                         startActivity(i);
                         finish();
 //                    }

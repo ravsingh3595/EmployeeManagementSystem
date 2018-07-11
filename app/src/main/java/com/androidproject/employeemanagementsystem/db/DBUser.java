@@ -49,7 +49,7 @@ public class DBUser
 
     }
 
-    public void updateUser(User user)
+    public void updateUser(User user, Context context)
     {
         dbHelper = new DBHelper(context);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
@@ -63,8 +63,8 @@ public class DBUser
         contentValues.put(USER_CITY, user.getCity());
         contentValues.put(USER_PROVINCE, user.getProvince());
         contentValues.put(USER_COUNTRY, user.getCountry());
-        //contentValues.put(USER_LATITUDE, user.getLatitude());
-        //contentValues.put(USER_LONGITUDE, user.getLongitude());
+        contentValues.put(USER_LATITUDE, user.getLatitude());
+        contentValues.put(USER_LONGITUDE, user.getLongitude());
         database.update(TABLE_USER,  contentValues, USER_EMAIL + "=?", new String[]{user.getEmail()});
         database.close();
     }
