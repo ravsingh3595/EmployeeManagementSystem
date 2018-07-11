@@ -13,7 +13,15 @@ public abstract class Employee implements Serializable{
     private Vehicle vehicle;
     private String employee;
     private int employeeId;
+    private String vehicleType;
 
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
 
     public Employee()
     {
