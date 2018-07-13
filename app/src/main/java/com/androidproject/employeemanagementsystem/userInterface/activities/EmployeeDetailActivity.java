@@ -151,15 +151,16 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             txtVehicalTitle.setText("Employee has a car");
             txtModel.setText(employee.getVehicle().getCompany());
             txtPlateNumber.setText(employee.getVehicle().getPlate());
+
             }
             else
                 {
                     txtVehicalTitle.setText("Employee has no vehicle");
                 }
         if (employee instanceof Intern) {
+            relativeIntern.setVisibility(View.VISIBLE);
             Intern intern = (Intern) employee;
             Log.d("DetailActivity", "I "+intern.getSchoolName());
-            relativeIntern.setVisibility(View.VISIBLE);
             txtName.setText(intern.getName());
             txtEmployeeType.setText("Employee is Intern");
             txtCollegeName.setText(intern.getSchoolName());
@@ -168,24 +169,26 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         }
         else if (employee instanceof FullTime) {
 
+            relativeFullTime.setVisibility(View.VISIBLE);
             FullTime fullTime = (FullTime) employee;
             Log.d("DetailActivity", "F "+fullTime.getName());
             txtName.setText(fullTime.getName());
             txtEmployeeType.setText("Employee is Full Time");
-            relativeFullTime.setVisibility(View.VISIBLE);
             txtSalary.setText(String.valueOf(fullTime.getSalary()));
             txtBonus.setText(String.valueOf(fullTime.getBonus()));
+
         }
         else if (employee instanceof CommissionBasedPartTime) {
             CommissionBasedPartTime commissionBasedPartTime = (CommissionBasedPartTime) employee;
             Log.d("DetailActivity", "C "+commissionBasedPartTime.getName());
+            relativePartTime.setVisibility(View.VISIBLE);
             txtName.setText(commissionBasedPartTime.getName());
             txtEmployeeType.setText("Employee is Commission based");
             txtHourWorked.setText(String.valueOf(commissionBasedPartTime.getHoursWorked()));
             txtRate.setText(String.valueOf(commissionBasedPartTime.getRate()));
             txtCommOrFixedTitle.setText("Commition Percentage: ");
             txtCommPerOrFixedAmount.setText((String.valueOf(commissionBasedPartTime.getCommissionPercentage())) + "%");
-            relativePartTime.setVisibility(View.VISIBLE);
+
         }
         else if (employee instanceof FixedBasedPartTime) {
             FixedBasedPartTime fixedBasedPartTime = (FixedBasedPartTime) employee;

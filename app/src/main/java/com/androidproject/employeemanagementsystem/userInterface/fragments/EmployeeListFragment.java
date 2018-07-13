@@ -61,9 +61,8 @@ public class EmployeeListFragment extends Fragment {
         listEmplyee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
                 // send data to employee detail activity
-
-
                 Intent intent = new Intent(getActivity(), EmployeeDetailActivity.class);
                 intent.putExtra("employee", employeeArrayList.get(position));
                 startActivity(intent);

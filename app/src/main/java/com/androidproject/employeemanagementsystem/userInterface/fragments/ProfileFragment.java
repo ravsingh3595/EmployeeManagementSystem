@@ -110,12 +110,15 @@ public class ProfileFragment extends Fragment {
         unbinder = ButterKnife.bind(this, rootView);
 
         User u = (User) getActivity().getIntent().getSerializableExtra("UserData");
-        edtName.setText(u.getFullname());
-        edtDOB.setText(u.getBirthDate());
-        edtStreet.setText(u.getAddress());
-        edtCity.setText(u.getCity());
-        edtProvince.setText(u.getProvince());
-        edtCountry.setText(u.getCountry());
+
+        /* umcomment later on */
+
+//        edtName.setText(u.getFullname());
+//        edtDOB.setText(u.getBirthDate());
+//        edtStreet.setText(u.getAddress());
+//        edtCity.setText(u.getCity());
+//        edtProvince.setText(u.getProvince());
+//        edtCountry.setText(u.getCountry());
 
         setHasOptionsMenu(true);
         return rootView;
