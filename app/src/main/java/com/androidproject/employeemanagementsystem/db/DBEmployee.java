@@ -75,7 +75,7 @@ public class DBEmployee {
                     while (cursor.moveToNext()) {
 
 
-                        Log.d("DBEmployeeCheck", String.valueOf(cursor.getCount()));
+                        Log.d("DBEmployeeCheck row count: ", String.valueOf(cursor.getCount()));
                         try {
                             if (cursor.getString(cursor.getColumnIndex("employeeType")).equals("Commission based")) {
                                 CommissionBasedPartTime com = new CommissionBasedPartTime();
@@ -86,8 +86,11 @@ public class DBEmployee {
                                 com.setHoursWorked(cursor.getDouble(5));
                                 com.setCommissionPercentage(cursor.getDouble(7));
                                 Log.d("DBEmployeeCheck", cursor.getString(1));
+
+
                                 if (com.getVehicleType() != null)
                                 {
+                                    /*
                                     if (com.getVehicleType().equals("car")) {
                                         Car car = new Car();
                                         car.setCompany(cursor.getString(13));
@@ -106,10 +109,32 @@ public class DBEmployee {
                                         vehicle = motorcycle;
                                         com.setVehicle(vehicle);
                                         com.setVehicleType(cursor.getString(12));
+                                    }*/
+
+                                    if (cursor.getString(cursor.getColumnIndex("vehicleType")).equals("car")){
+                                        Car car = new Car();
+                                        car.setCompany(cursor.getString(13));
+                                        car.setPlate(cursor.getString(14));
+
+                                        car.setColour(cursor.getString(15));
+                                        car.setYear(cursor.getInt(16));
+                                        vehicle = car;
+                                        com.setVehicle(vehicle);
+                                        com.setVehicleType(cursor.getString(12));
+                                    } else if (cursor.getString(cursor.getColumnIndex("employeeType")).equals("motor")) {
+                                        Motorcycle motorcycle = new Motorcycle();
+                                        motorcycle.setCompany(cursor.getString(13));
+                                        motorcycle.setPlate(cursor.getString(14));
+                                        motorcycle.setColour(cursor.getString(15));
+                                        motorcycle.setYear(cursor.getInt(16));
+                                        vehicle = motorcycle;
+                                        com.setVehicle(vehicle);
+                                        com.setVehicleType(cursor.getString(12));
                                     }
 
                                 }
                                 employee = com;
+                                employeeArrayList.add(employee);
                             }
                             if (cursor.getString(cursor.getColumnIndex("employeeType")).equals("Fixed based")) {
                                 FixedBasedPartTime fix = new FixedBasedPartTime();
@@ -121,6 +146,8 @@ public class DBEmployee {
                                 fix.setFixedAmount(cursor.getDouble(6));
 //                                fix.setVehicle(vehicle);
                                 Log.d("DBEmployeeCheck", cursor.getString(1));
+
+                                /*
                                 if (fix.getVehicleType() != null) {
                                     if (fix.getVehicleType().equals("car")) {
                                         Car car = new Car();
@@ -142,8 +169,31 @@ public class DBEmployee {
                                         fix.setVehicleType(cursor.getString(12));
                                     }
 
+                                }*/
+
+                                if (cursor.getString(cursor.getColumnIndex("vehicleType")).equals("car")){
+                                    Car car = new Car();
+                                    car.setCompany(cursor.getString(13));
+                                    car.setPlate(cursor.getString(14));
+
+                                    car.setColour(cursor.getString(15));
+                                    car.setYear(cursor.getInt(16));
+                                    vehicle = car;
+                                    fix.setVehicle(vehicle);
+                                    fix.setVehicleType(cursor.getString(12));
+                                } else if (cursor.getString(cursor.getColumnIndex("employeeType")).equals("motor")) {
+                                    Motorcycle motorcycle = new Motorcycle();
+                                    motorcycle.setCompany(cursor.getString(13));
+                                    motorcycle.setPlate(cursor.getString(14));
+                                    motorcycle.setColour(cursor.getString(15));
+                                    motorcycle.setYear(cursor.getInt(16));
+                                    vehicle = motorcycle;
+                                    fix.setVehicle(vehicle);
+                                    fix.setVehicleType(cursor.getString(12));
                                 }
+
                                 employee = fix;
+                                employeeArrayList.add(employee);
                             }
                             if (cursor.getString(cursor.getColumnIndex("employeeType")).equals("Intern")) {
                                 Intern intern = new Intern();
@@ -152,12 +202,35 @@ public class DBEmployee {
                                 intern.setEmployee(cursor.getString(3));
                                 intern.setSchoolName(cursor.getString(8));
 //                               intern.setVehicle(vehicle);
+                                if (cursor.getString(cursor.getColumnIndex("vehicleType")).equals("car")){
+                                    Car car = new Car();
+                                    car.setCompany(cursor.getString(13));
+                                    car.setPlate(cursor.getString(14));
+
+                                    car.setColour(cursor.getString(15));
+                                    car.setYear(cursor.getInt(16));
+                                    vehicle = car;
+                                    intern.setVehicle(vehicle);
+                                    intern.setVehicleType(cursor.getString(12));
+                                } else if (cursor.getString(cursor.getColumnIndex("employeeType")).equals("motor")) {
+                                    Motorcycle motorcycle = new Motorcycle();
+                                    motorcycle.setCompany(cursor.getString(13));
+                                    motorcycle.setPlate(cursor.getString(14));
+                                    motorcycle.setColour(cursor.getString(15));
+                                    motorcycle.setYear(cursor.getInt(16));
+                                    vehicle = motorcycle;
+                                    intern.setVehicle(vehicle);
+                                    intern.setVehicleType(cursor.getString(12));
+                                }
+
+                                /*
                                 Log.d("DBEmployeeCheck3", cursor.getString(1));
                                 if (intern.getVehicleType() != null) {
                                     if (intern.getVehicleType().equals("car")) {
                                         Car car = new Car();
                                         car.setCompany(cursor.getString(13));
                                         car.setPlate(cursor.getString(14));
+
                                         car.setColour(cursor.getString(15));
                                         car.setYear(cursor.getInt(16));
                                         vehicle = car;
@@ -174,8 +247,9 @@ public class DBEmployee {
                                         intern.setVehicleType(cursor.getString(12));
                                     }
 
-                                }
+                                }*/
                                 employee = intern;
+                                employeeArrayList.add(employee);
                             }
                             if (cursor.getString(cursor.getColumnIndex("employeeType")).equals("Fulltime")) {
                                 FullTime fullTime = new FullTime();
@@ -186,6 +260,29 @@ public class DBEmployee {
                                 fullTime.setBonus(cursor.getDouble(10));
 //                                fullTime.setVehicle(vehicle);
                                 Log.d("DBEmployeeCheck", cursor.getString(1));
+
+                                if (cursor.getString(cursor.getColumnIndex("vehicleType")).equals("car")){
+                                    Car car = new Car();
+                                    car.setCompany(cursor.getString(13));
+                                    car.setPlate(cursor.getString(14));
+
+                                    car.setColour(cursor.getString(15));
+                                    car.setYear(cursor.getInt(16));
+                                    vehicle = car;
+                                    fullTime.setVehicle(vehicle);
+                                    fullTime.setVehicleType(cursor.getString(12));
+                                } else if (cursor.getString(cursor.getColumnIndex("employeeType")).equals("motor")) {
+                                    Motorcycle motorcycle = new Motorcycle();
+                                    motorcycle.setCompany(cursor.getString(13));
+                                    motorcycle.setPlate(cursor.getString(14));
+                                    motorcycle.setColour(cursor.getString(15));
+                                    motorcycle.setYear(cursor.getInt(16));
+                                    vehicle = motorcycle;
+                                    fullTime.setVehicle(vehicle);
+                                    fullTime.setVehicleType(cursor.getString(12));
+                                }
+
+                                /*
                                 if (fullTime.getVehicleType() != null) {
                                     if (fullTime.getVehicleType().equals("car")) {
                                         Car car = new Car();
@@ -206,15 +303,16 @@ public class DBEmployee {
                                         fullTime.setVehicle(vehicle);
                                         fullTime.setVehicleType(cursor.getString(12));
                                     }
-                                }
+                                }*/
                                 employee = fullTime;
+                                employeeArrayList.add(employee);
                             }
                         } catch (NullPointerException a) {
                             Log.d("DBEmployeeCheck", "In catch");
                         }
                     }
                     Log.d("DBEmployeeCheck", "Added to employee list");
-                    employeeArrayList.add(employee);
+//                    employeeArrayList.add(employee);
                 }
             }
         database.close();

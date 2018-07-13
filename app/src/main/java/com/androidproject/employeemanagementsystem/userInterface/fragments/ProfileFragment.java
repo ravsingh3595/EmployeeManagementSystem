@@ -115,6 +115,7 @@ public class ProfileFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
+
         userArrayList = dbUser.getAllUser();
 
         User u = userArrayList.get(0);
@@ -126,6 +127,7 @@ public class ProfileFragment extends Fragment {
         edtCity.setText(u.getCity());
         edtProvince.setText(u.getProvince());
         edtCountry.setText(u.getCountry());
+
 
         setHasOptionsMenu(true);
         return rootView;
