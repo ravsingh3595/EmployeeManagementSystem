@@ -17,15 +17,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".userInterface.activities.LoginScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".userInterface.activities.SplashScreenActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <activity
             android:name=".userInterface.activities.MainTabActivity"
             android:label="Employee"
@@ -34,14 +36,17 @@
         <activity
             android:name=".userInterface.activities.SignUpActivity"
             android:parentActivityName=".userInterface.activities.LoginScreenActivity"
-
             android:label="Sign up">
         </activity>
         <activity android:name=".PdfActivity" />
         <activity android:name=".userInterface.activities.EmployeeDetailActivity"
-            android:parentActivityName=".userInterface.activities.MainTabActivity"></activity>
+            android:parentActivityName=".userInterface.activities.MainTabActivity">
 
-        <activity android:name=".userInterface.activities.AddEmployeeActivity"></activity>
+        </activity>
+
+        <activity android:name=".userInterface.activities.AddEmployeeActivity">
+
+        </activity>
 
 
     </application>

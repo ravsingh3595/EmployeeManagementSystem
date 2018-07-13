@@ -3,9 +3,11 @@ package com.androidproject.employeemanagementsystem.userInterface.fragments;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.icu.util.Calendar;
 import android.location.Address;
@@ -35,6 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidproject.employeemanagementsystem.R;
+import com.androidproject.employeemanagementsystem.db.DBHelper;
 import com.androidproject.employeemanagementsystem.db.DBUser;
 import com.androidproject.employeemanagementsystem.model.employee.Employee;
 import com.androidproject.employeemanagementsystem.model.user.User;
@@ -46,6 +49,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -99,8 +103,10 @@ public class ProfileFragment extends Fragment {
     private DatePickerDialog datePickerDialog;
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     private String userChoosenTask;
-    User user = new User();
+    private Context context;
+
     DBUser dbUser;
+    ArrayList<User> userArrayList = new ArrayList<>();
 
 
     @Override
@@ -109,16 +115,19 @@ public class ProfileFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-        User u = (User) getActivity().getIntent().getSerializableExtra("UserData");
 
-        /* umcomment later on */
+        userArrayList = dbUser.getAllUser();
 
-//        edtName.setText(u.getFullname());
-//        edtDOB.setText(u.getBirthDate());
-//        edtStreet.setText(u.getAddress());
-//        edtCity.setText(u.getCity());
-//        edtProvince.setText(u.getProvince());
-//        edtCountry.setText(u.getCountry());
+        User u = userArrayList.get(0);
+      //  userArrayList.add(u);
+       //User u = (User) getActivity().getIntent().getSerializableExtra("UserData");
+        edtName.setText(u.getFullname());
+        edtDOB.setText(u.getBirthDate());
+        edtStreet.setText(u.getAddress());
+        edtCity.setText(u.getCity());
+        edtProvince.setText(u.getProvince());
+        edtCountry.setText(u.getCountry());
+
 
         setHasOptionsMenu(true);
         return rootView;
@@ -133,6 +142,7 @@ public class ProfileFragment extends Fragment {
                 break;
             case R.id.btnSave:
                 if (validate()) {
+                    User user = new User();
                     user.setFullname(edtName.getText().toString());
                     user.setEmail("user@abc.in");
                     user.setBirthDate(edtDOB.getText().toString());
@@ -142,9 +152,8 @@ public class ProfileFragment extends Fragment {
                     user.setCountry(edtCountry.getText().toString());
                     user.setLatitude(43.696431);
                     user.setLongitude(-79.283014);
-                    dbUser.updateUser(user,getActivity());
+                    dbUser.updateUser(user);
                     Toast.makeText(getActivity(), "Profile Updated", Toast.LENGTH_SHORT).show();
-
                 }
                 break;
             case R.id.btnUpload:
