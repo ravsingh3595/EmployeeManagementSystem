@@ -96,7 +96,7 @@ public class MainTabActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_help:
                 // download pdf code
-                Toast.makeText(MainTabActivity.this, "download pdf", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(MainTabActivity.this, "download pdf", Toast.LENGTH_SHORT).show();
                 showDialog();
                 break;
         }
@@ -109,7 +109,7 @@ public class MainTabActivity extends AppCompatActivity {
     {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainTabActivity.this);
         alertDialogBuilder.setTitle("Alert Message");
-        alertDialogBuilder.setMessage("Here we will show the details");
+        alertDialogBuilder.setMessage("Emergency contact details \n call:6476852023 \n Email: employee@gmail.com");
         alertDialogBuilder.setCancelable(false);
 
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()

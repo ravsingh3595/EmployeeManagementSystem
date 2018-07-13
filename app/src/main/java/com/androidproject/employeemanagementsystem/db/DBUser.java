@@ -49,7 +49,7 @@ public class DBUser
 
     }
 
-    public void updateUser(User user, Context context)
+    public void updateUser(User user)
     {
         dbHelper = new DBHelper(context);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
@@ -81,7 +81,8 @@ public class DBUser
     public ArrayList<User> getAllUser()
     {
         dbHelper = new DBHelper(context);
-        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+
 
         Cursor cursor = database.query(TABLE_USER,
                 null,
@@ -96,20 +97,22 @@ public class DBUser
         {
             if(cursor.getCount() > 0)
             {
+                User user = new User();
                 while (cursor.moveToNext())
                 {
-                    User user = new User();
-                    user.setFullname(cursor.getString(0));
-                    user.setEmail(cursor.getString(1));
-                    user.setPassword(cursor.getString(2));
-                    user.setPicture(cursor.getString(3));
-                    user.setBirthDate(cursor.getString(4));
-                    user.setAddress(cursor.getString(5));
-                    user.setCity(cursor.getString(6));
-                    user.setProvince(cursor.getString(7));
-                    user.setCountry(cursor.getString(8));
-                    user.setLatitude(cursor.getDouble(9));
-                    user.setLongitude(cursor.getDouble(10));
+
+                    user.setFullname(cursor.getString(1));
+                    user.setEmail(cursor.getString(2));
+                    user.setPassword(cursor.getString(3));
+                    user.setPicture(cursor.getString(4));
+                    user.setBirthDate(cursor.getString(5));
+                    user.setAddress(cursor.getString(6));
+                    user.setCity(cursor.getString(7));
+                    user.setProvince(cursor.getString(8));
+                    user.setCountry(cursor.getString(9));
+                    user.setLatitude(cursor.getDouble(10));
+                    user.setLongitude(cursor.getDouble(11));
+                    Log.d("DataUser", user.getFullname()+" "+user.getEmail());
                     userArrayList.add(user);
                 }
             }

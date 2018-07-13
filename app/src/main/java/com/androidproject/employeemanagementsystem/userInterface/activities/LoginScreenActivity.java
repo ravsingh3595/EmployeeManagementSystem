@@ -1,5 +1,6 @@
 package com.androidproject.employeemanagementsystem.userInterface.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,7 +27,8 @@ public class LoginScreenActivity extends AppCompatActivity {
     private EditText edtPassword;
     private CheckBox ckbRememberMe;
     SharedPreferences mSharedPreferences;
-    User user = new User();
+    DBHelper dbHelper;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                         }
                         //7 - Save changes permanently to shared preferences
                         mEditor.apply();
-
+                        User user = new User();
                         user.setFullname("MocUser");
                         user.setEmail("user@abc.in");
                         user.setPassword(edtPassword.getText().toString());
@@ -87,7 +89,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                         user.setCountry("Canada");
                         user.setLatitude(43.696431);
                         user.setLongitude(-79.283014);
-                        dbUser.updateUser(user,LoginScreenActivity.this);
+                        dbUser.updateUser(user);
                         Intent intent = new Intent(LoginScreenActivity.this, MainTabActivity.class);
                         intent.putExtra("UserData", user);
                         startActivity(intent);
